@@ -1,0 +1,752 @@
+body {
+	margin: 0;
+	font-family: Georgia;
+	font-size: .75em;
+	background: -moz-linear-gradient(right, #E5EADE, #F8F9F5, #FFFFFF);
+}
+#container {
+	text-align: center;
+	margin: auto;
+	//width: 90%;
+	width: 1100px;
+}
+#header {
+	width: 86%;
+}
+#scopeTitleSmaller {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#content {
+	text-align: left;
+	/*width: 86%;*/
+	height: 880px;
+	/*margin-right: 6%;*/
+	/*padding-right: 45px;*/
+}
+#content_wrapper {
+
+	/*height: 100%;*/
+
+}
+#sidebar {
+	/*padding-top: 25px;*/
+	//width: 265px;
+	width: 30%;
+	/*margin: auto;*/
+	float: right;
+	/*padding-right: 60px;*/
+	text-align: left;
+	/*margin-left: 0;*/
+	padding-top: 0px;
+	margin-left: 0px;
+}
+#sidebar h4 {
+	margin-top: 15px;
+	margin-left: 15px;
+}
+.boxfoot {
+	margin-right: 50px;
+}
+#page {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	/*width: 94%;
+	width: 73%*/
+	width: 100%;
+	text-align: left;
+	background-color: #DFE2E6;
+	/*height: 1000px;*/
+
+}
+#left_navbar {
+	float: left;
+	/*width: 56%;*/
+	width: 100%;
+
+	/*height: 100%;*/
+
+}
+#selection_control_wrapper {
+	background-color: #DFE2E6;
+	margin-left: 0;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 10px;
+	height: 410px;
+}
+#inner_selection_control_wrapper {
+	display: none;
+	background-color: #DFE2E6;
+}
+.select_year_label {
+	padding-left: 15px;
+	padding-bottom: 0px;
+	text-align: center;
+	color: #00224C;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 1em;
+	margin: 20px 0px 0px 0px;
+	line-height: 40px;
+}
+.select_month_label {
+	padding-left: 30px;
+	padding-bottom: 0px;
+	text-align: center;
+	color: #00224C;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 1em;
+	margin: 0px;
+	line-height: 40px;
+}
+.select_day_label {
+	padding-left: 60px;
+	padding-bottom: 0px;
+	text-align: center;
+	color: #00224C;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 1em;
+	margin: 0px;
+	line-height: 40px;
+}
+#month_year_container {
+	float: left;
+}
+#year_option {
+	float: left;
+	/*margin-left: 32px;*/
+	margin-left: 27px;
+	margin-top: 12px;
+	/*font-size: .98em;*/
+	width: 60px !important;
+	background-color: #4E4F7F;
+	color: #DFE2E6;
+	font-family: Arial;
+	font-size: 1.1em;
+}
+/*----------------------------------------*/
+/* Month box style rules                  */
+/*----------------------------------------*/
+#month_control_wrapper {
+	/*margin: 25px 0 0 32px;*/
+	margin: 0px 0px 0px 32px;
+	clear: both;
+	width: 232px;
+}
+.month_box {
+	float: left;
+	padding: 8px 0 8px 0;
+	height: 19px;
+	width: 55px;
+	color: #989AA9;
+	text-align: center;
+	font-family: Arial;
+	font-size: .8em;
+}
+.month_box_not_available {
+	background-color: #DFE2E6;
+	color: #989AA9;
+	font-weight: bold;
+}
+.month_box_available {
+	background-color: #ADBD90;
+	font-size: 1.1em;
+	padding: 6px 0 5px 0;
+	color: #00224C;
+	font-weight: regular;
+}
+.month_box_selected {
+	background-color: #4E4F7F;
+	color: #DFE2E6;
+	font-size: 1.1em;
+	padding: 6px 0 5px 0;
+	vertical-align: middle;
+	font-weight: bold;
+}
+#jan {
+	border-top: 1px solid #989AA9;
+	border-right: 1px solid #989AA9;
+	border-left: 1px solid #989AA9;
+}
+#feb, #mar {
+	border-top: 1px solid #989AA9;
+	border-right: 1px solid #989AA9;
+}
+#apr {
+	border-top: 1px solid #989AA9;
+	border-right: 1px solid #989AA9;
+}
+#may {
+	/*clear: both;*/
+	clear: left;
+	border-top: 1px solid #989AA9;
+	border-right: 1px solid #989AA9;
+	border-left: 1px solid #989AA9;
+}
+#jun, #jul, #aug {
+	border-top: 1px solid #989AA9;
+	border-right: 1px solid #989AA9;
+}
+#sep {
+	clear: both;
+	border-top: 1px solid #989AA9;
+	border-right: 1px solid #989AA9;
+	border-bottom: 1px solid #989AA9;
+	border-left: 1px solid #989AA9;
+}
+#oct, #nov, #dec {
+	border-top: 1px solid #989AA9;
+	border-right: 1px solid #989AA9;
+	border-bottom: 1px solid #989AA9;
+}
+#result {
+	float: left;
+	color: #7A7A94;
+	width: 100%;
+	padding: 0;
+}
+#newspaper_info {
+	margin: 0;
+}
+#title_date_display {
+	font-family: Arial;
+	font-weight: bold;
+	background-color: #2D2D4D;
+	color: #FFFFFF;
+	padding: 10px 0 10px 0;
+	line-height: 1.4em;
+	height: 41px;
+}
+#title_display {
+	padding-left: 31px;
+	float: left;
+}
+#title_info {
+	background-color: #FFFFFF;
+	border: 1px solid #898C80;
+	padding: 20px 20px 0px 20px;
+	width: 100%;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#available_formats {
+	background-color: #FFFFFF;
+	border: 1px solid #898C80;
+	padding: 20px 20px 0px 20px;
+	width: 100%;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#available_formats ul {
+	margin-left: 15px;
+	padding: 0px;
+}
+#available_formats li {
+	font-family: Georgia;
+}
+#available_repositories {
+	background-color: #FFFFFF;
+	border: 1px solid #898C80;
+	padding: 20px 20px 0px 20px;
+	width: 100%;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#available_repositories ul {
+	margin-left: 15px;
+	padding: 0px;
+}
+#available_repositories li {
+	font-family: Georgia;
+}
+#pub_genealogy {
+	background-color: #FFFFFF;
+	border: 1px solid #898C80;
+	padding: 20px 20px 0px 20px;
+	width: 100%;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#pub_genealogy ul {
+	margin-left: 15px;
+	padding: 0px;
+}
+#pub_genealogy li {
+	font-family: Georgia;
+}
+div.not_icon_title p{
+	margin-top: 10px;
+}
+.title_section_first {
+	margin: 0px;
+	/*padding-left: 15px;
+	text-indent: -15px;*/
+}
+.title_section {
+	margin: 10px 0 0 0;
+
+}
+.title_section  ul {
+	font-family: Georgia;
+	padding: 0px;
+	margin: 0px;
+}
+.title_section  li {
+	font-family: Georgia;
+	padding-left: 3px;
+	margin-left: 15px;
+}
+#add_ref {
+	padding: 10px 10px 0 10px;
+	font-size: 11px;
+}
+#add_ref a {
+	text-decoration: underline;
+}
+.add_ref_text {
+	margin: 10px 0 10px 0;
+}
+#repository_info {
+	background-color: #FFFFFF;
+	border: 1px solid #898C80;
+	padding: 20px 20px 0px 20px;
+	width: 80%;
+	margin-left: 15px;
+}
+#repository_info a {
+	text-decoration: underline;
+}
+.sidebar_link {
+	text-decoration: underline;
+	font-style: italic;
+	margin: 0px;
+	padding: 0px;
+}
+#issue_date_display {
+	/*float: right;*/
+	/*padding-right: 41px;*/
+	float: left;
+	padding-left: 41px;
+}
+#issue_info_display {
+	background-color: #FFFFFF;
+	/*height: 260px;*/
+	height: 421px;
+	padding-top: 8px;
+	padding-left: 30px;
+	font-family: Arial;
+	line-height: 1.4em;
+	color: #00224C;
+}
+#inner_issue_info_display {
+	display: none;
+	padding: 8px 0 30px 0;
+}
+a.page_link {
+	padding-left: 10px;
+	font-style: italic;
+}
+a.previous_link {
+	font-style: italic;
+}
+a.next_link {
+	padding-left: 10px;
+	font-style: italic;
+}
+a.active_page {
+	font-weight: bold;
+}
+#page_navigation {
+	visibility: hidden;
+	margin-top: 0px;
+}
+#format_table {
+	margin-left: 0px;
+}
+#format_table td{
+	width: 280px;
+	padding: 0px 30px 0px 0px;
+	vertical-align: top;
+	color: #00224C;
+}
+#format_table td a:link,
+#format_table td a:hover,
+#format_table td a:visited,
+#format_table td a:active {
+	font-weight: bold;
+}
+#format_pager {
+	font-style: italic;
+	padding-top: 10px;
+}
+#repository_table {
+	margin-left: 0px;
+}
+#repository_table a {
+	font-weight: bold;
+}
+#repository_table td{
+	width: 280px;
+	padding: 0px 30px 0px 0px;
+	vertical-align: top;
+	color: #00224C;
+}
+#repository_pager {
+	font-style: italic;
+	padding-top: 10px;
+}
+.currentPage {
+	padding: 0 5px;
+}
+.totalPages {
+	padding: 0 5px;
+}
+.nextPage {
+	padding-left: 5px;
+}
+.prevPage {
+	padding-right: 5px;
+}
+#footer_bar {
+	background: none;
+}
+div.loading-calendar-invisible{
+    display:none;
+  }
+div.loading-calendar-visible{
+	padding-top: 30%;
+	padding-bottom: 20%;
+	/*margin-left: 40%;*/
+	text-align: center;
+    display:block;
+	color: 556C88;
+	font-family: Arial;
+	font-style: italic;
+	font-size: 1.05em;
+	height: 22%;
+}
+div.loading-calendar-visible p{
+	color: #556C88;
+}
+div .loading-calendar-visible img {
+	display: inline;
+}
+div.loading-issue-info-invisible{
+    display:none;
+}
+div .loading-issue-info-invisible img {
+	display: none;
+}
+div.loading-issue-info-visible{
+	padding: 5% 0 5% 0;
+	text-align: center;
+    display:block;
+	font-family: Arial;
+	font-style: italic;
+	font-size: 1.05em;
+	/*border: 1px solid #85887F;*/
+	background-color: #FFFFFF;
+	color: #7B8F56;
+}
+div .loading-issue-info-visible img {
+	display: inline;
+}
+.link_group_container {
+	padding: 0 0 20px 0;
+}
+.link_group_container a:link, a:visited, a:hover, a:active  {
+	color: #00224C;
+}
+.breadcrumb {
+	font-style: italic;
+}
+.breadcrumb a:link, a:visited, a:hover, a:active  {
+	color: #00224C;
+}
+.title_info_label {
+	font-weight: normal;
+}
+.issue_info_label {
+	font-weight: normal;
+}
+.issue_info_text {
+	font-weight: bold;
+}
+.repos_note {
+	font-size: 10px;
+	margin: 10px 0 0 0;
+	font-family: Georgia;
+}
+.bottom_border {
+	padding-left: 10px;
+	border-bottom: 1px solid #958F5C;
+}
+/*----------------------*/
+/* Timeline style rules */
+/*----------------------*/
+.timeline {
+	background-color: #DFE2E6;
+	float: left;
+	margin: 0px 24px;
+	padding:0em 0em 1.3em 0em;
+}
+.timeline ul {
+	margin-top: 0px;
+}
+.timeline li {
+	float:left;
+	height:4em;
+	list-style-type:none;
+	margin:0 0 0 0;
+	position:relative;
+	width:4em;
+}
+.timeline li li {
+	height:3em;
+	position:absolute;
+	top:0;
+	width:10%;
+}
+.timeline li a {
+	display:block;
+	height:100%;
+	width:100%;
+	text-decoration: none;
+}
+.timeline .label {
+	bottom: 1em;
+	border:1px solid #CCC;
+	border-width:1px 1px 0 0;
+	/*border-width: 0 1px 1px 0;*/
+	display:block;
+	height:1em;
+	left:0;
+	position:absolute;
+	text-align:center;
+	width:100%;
+}
+.timeline li a .count {
+	height: 3em;
+	background-color: #4E4F7F;
+	color: #4E4F7F;
+	bottom: 7px;
+	display:block;
+	overflow:hidden;
+	position:absolute;
+	width:100%;
+}
+.timeline .label a {
+	color: #4E4F7F;
+}
+.timeline .y0 { left:0%;  font-size: 8px; }
+.timeline .y1 { left:10%; font-size: 8px; }
+.timeline .y2 { left:20%; font-size: 8px; }
+.timeline .y3 { left:30%; font-size: 8px; }
+.timeline .y4 { left:40%; font-size: 8px; }
+.timeline .y5 { left:50%; font-size: 8px; }
+.timeline .y6 { left:60%; font-size: 8px; }
+.timeline .y7 { left:70%; font-size: 8px; }
+.timeline .y8 { left:80%; font-size: 8px; }
+.timeline .y9 { left:90%; font-size: 8px; }
+
+#li_1690s_ {
+	display: none;
+}
+/*----------------------------------------*/
+/* jQuery UI Datepicker plugin style rules*/
+/*----------------------------------------*/
+#datepicker_container {
+	float: left;
+	padding-bottom: 13px;
+
+	/*font-size: 1em;*/
+
+	/*width: 52%;*/
+	width: 53%;
+
+	width: 283px;
+	color: #00224C;
+}
+.ui-datepicker-title {
+	/*Contains built-in month and year selection controls*/
+	background-color: #4E4F7F;
+	color: #DFE2E6;
+	font-weight: bold;
+	font-family: Arial;
+
+	/*font-size: 1.1em;*/
+
+
+	text-align: center;
+	text-transform: uppercase;
+
+	margin-left: 52px;
+	/*margin-left: 45px;*/
+
+	padding-top: 1px;
+	padding-bottom: 4px;
+	padding-right: 25px;
+	padding-left: 21px;
+	height: 18px;
+
+	/*width: 282px;*/
+	/*width: 100%;*/
+	width: 104.5%;
+
+	border-top: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+.ui-datepicker-month {
+	margin: 0;
+	padding: 0;
+}
+.ui-datepicker-year {
+	margin: 0;
+	padding: 0;
+}
+.ui-datepicker-calendar {
+	float: left;
+
+	width: 60%;
+	/*width: 282px;*/
+
+	background-color: #FFFFFF;
+}
+.ui-datepicker  table{
+	border-collapse: collapse;
+	font-family: Arial;
+	width: 85%;
+	margin-left: 52px;
+	/*font-size: .95em;*/
+	font-size: 1em;
+}
+.ui-datepicker-calendar th {
+	background-color: #4E4F7F;
+	color: #DFE2E6;
+	border: 1px solid #000000;
+	width: 20px;
+	text-align: center;
+	padding-left: 6px;
+}
+.ui-datepicker  td {
+	border: 1px solid #000000;
+	text-align: center;
+	color: #2D2D4D;
+}
+td .ui_datepicker_unselectable span.ui-state-default {
+	color: #00224C;
+}
+.ui-datepicker-inline {
+	clear: both;
+	color: #00224C;
+}
+.ui-icon {
+	/*Hides built-in 'previous' and 'next' icons*/
+	float: left;
+	display: none;
+ublication_date {
+	background-color: #ADBD90;
+	color: #00224C;
+}
+.publication_date a {
+	background-color: #ADBD90;
+	color: #00224C;
+}
+.publication_date a:hover {
+	background-color: #ADBD90;
+	color: #00224C;
+}
+.selected_publication_date {
+	background-color: #4E4F7F;
+	color: #DFE2E6;
+}
+.selected_publication_date a{
+	background-color: #4E4F7F;
+	color: #DFE2E6;
+	font-weight: bold;
+}
+.selected_publication_date a:hover {
+	background-color: #4E4F7F;
+	color: #DFE2E6;
+}
+.not_publication_date span{
+	color: #00224C;
+}
+span .ui-state-default {
+  font-weight: regular;
+  color: #00224C;
+}
+/* Interaction states for datePicker plugin
+--------------------------------------------*/
+/*
+.ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  font-weight: regular;
+  color: #556C88;
+  text-decoration: none;
+}
+.publication_date {
+	background-color: purple !important;
+	color: #FFFFFF !important;
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+  text-decoration: none;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+  font-weight: regular;
+  text-decoration: none;
+}
+.ui-state-hover a, .ui-state-hover a:hover {
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+}
+.ui-widget :active {
+  outline: none;
+}
+*/
+/* Style rules for other jQuery UI widgets
+-------------------------------------------*/
+.ui-autocomplete {
+	position: absolute; cursor: default;
+}
+.ui-menu {
+	list-style:none;
+	padding: 1px;
+	margin: 0;
+	display:block;
+	float: left;
+	background-color: #FFF;
+	border: 1px solid #D6CCC0;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	float: left;
+	clear: left;
+	width: 100%;
+	font-size: .8em;
+	color: #37375E;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+}
+/*.ui-autocomplete-loading { background: white url('autocomplete_loader.gif') right center no-repeat; }*/
