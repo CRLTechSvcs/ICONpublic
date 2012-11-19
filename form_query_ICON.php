@@ -1,3 +1,18 @@
+<?php
+
+/*
+	form_query_ICON.php
+	added 2012-11-19 to support user tasks:
+		-search for all issues of all publications for a given DATE
+		-search for all issues of all publications for a given CITY
+		-search for all issues of all publications for a given COUNTRY
+		-search for all issues of all publications for a given REPOSITORY
+		-cross-reference searches of DATE, CITY, COUNTRY, REPOSITORY
+		-search ISSN, LCCN, OCLC
+
+*/
+?>
+
 
 	<div id="content_wrapper" style="visibility: visible">
 		<!--Hidden pagination controls-->
@@ -6,7 +21,64 @@
 		<div id="left_navbar">
 			<div id="selection_control_wrapper">
 				<div id="loading-calendar" class="loading-calendar-visible">
-					<p></p>
+					<p>
+
+				<form name="form_query_ICON" id="form_query_ICON" method="POST" action="index.php">
+
+					<!--trigger response to form-->
+					<input name="ICONquery" id="ICONquery" type="hidden" value="ICONquery">
+
+
+					<div id="query_ICON_dates">
+						Year: <input name="query_ICON_year" id="query_ICON_year" type="text" value="1900" size="4" maxlength="4" />
+
+						Month: <select name="query_ICON_month" id="query_ICON_month" size="1">
+							<option class="label" value="01">January</option>
+							<option class="label" value="02">February</option>
+							<option class="label" value="03">March</option>
+							<option class="label" value="04">April</option>
+							<option class="label" value="05">May</option>
+							<option class="label" value="06">June</option>
+							<option class="label" value="07">July</option>
+							<option class="label" value="08">August</option>
+							<option class="label" value="09">September</option>
+							<option class="label" value="10">October</option>
+							<option class="label" value="11">November</option>
+							<option class="label" value="12">December</option>
+						</select>
+
+						Day: <select name="query_ICON_day" id="query_ICON_day" size="1">
+							<option class="label" value="01">01</option>
+							<option class="label" value="02">02</option>
+							<option class="label" value="03">03</option>
+							<option class="label" value="04">04</option>
+							<option class="label" value="05">05</option>
+							<option class="label" value="06">06</option>
+							<option class="label" value="07">07</option>
+							<option class="label" value="08">08</option>
+							<option class="label" value="09">09</option>
+							<option class="label" value="10">10</option>
+							<option class="label" value="11">11</option>
+							<option class="label" value="12">12</option>
+							<option class="label" value="12">...add more...</option>
+						</select>
+					</div><!--#query_ICON_dates-->
+
+
+					<div id="query_ICON_location">
+						Published in city: <input name="pub_city" id="pub_city" type="text" value="Boston" size="25" maxlength="75" />
+						Published in country: <input name="country_id" id="country_id" type="text" value="mau" size="3" maxlength="3" />
+						Held in repository: <input name="query_ICON_repos" id="query_ICON_repos" type="text" value="BPL" size="3" maxlength="3" />
+					</div><!--# query_ICON_location-->
+
+
+					<input type="submit" name="submit_query_ICON" id="submit_query_ICON" class="label" value="query ICON" />
+
+				</form>
+
+
+
+					</p>
 				</div>
 				<div id="inner_selection_control_wrapper">
 					<select id="year_option" name="year_option" >
@@ -200,7 +272,7 @@
 							</ul>
 						</li>
 					</ul>
-					<div id="month_year_container">
+					<div id="month_year_container">FORM
 						<label class="select_month_label">Select month by clicking on a box below:</label>
 						<div id="month_control_wrapper">
 							<div class="month_box" id="jan">JAN</div>

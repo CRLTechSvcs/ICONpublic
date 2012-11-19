@@ -12,7 +12,7 @@
 	$strTRcolorAlt 	= "#e9e6d3";	//lighter
 	//include ("calendarFunctions.php");
 
-$bShowDebug = 1; // value of 0 = don't show application debugging; 1 = do show it
+$bShowDebug = 0; // value of 0 = don't show application debugging; 1 = do show it
 $strAppDebug = "<br/>Application debugging data for display during development: ";
 /*
 $strAppDebug .= "<h4>$ _ RQ[pub_id] = '" . $_REQUEST['pub_id'] . "'</h4>";
@@ -155,6 +155,8 @@ else $titleParameter = "holdings on this publication";
 
 
 <div id="content"><!-- white boxed area of page, contains main content, language handlers and sidebar -->
+
+
 <div id="sidebar">
 
 	<div class="block">
@@ -201,8 +203,21 @@ else $titleParameter = "holdings on this publication";
 <div id="page"><!-- main text and search results area -->
 
 	<?php
-		include "server_calendar_selection_controls.html"; //insert actual calendar controls here
+
+		//include "server_calendar_selection_controls.html"; //insert actual calendar controls here
+
+			//AJE 2012-11-19 NEW : QUERY ALL ISSUES + PUBLICATIONS
+		include 'form_query_ICON.php';
+		if ($_REQUEST['ICONquery']) { //respond to the submitted query
+			include('get_query_ICON.php');
+		}//end if
+
+
+
 	?>
+
+
+
 
 <script language="javascript" type="text/javascript">
 	//Strip spaces out of the pub_id passed in from bib rec
