@@ -104,7 +104,7 @@ else $titleParameter = "holdings on this publication";
 		<![endif]-->
 
 		<!-- 2012-05-30 AJE and CFJ - use standalone favicon rather than catalog server version -->
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" type="image/x-icon"  href="images/favicon.ico" />
 
 		<script type="text/javascript" language="javascript" src="json2.js"></script>
 		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>

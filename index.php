@@ -5,17 +5,14 @@
 	header("Expires: Sat, 15 Oct 2011 00:00:00 GMT"); // Date in the past
 
 	//setcookie(name, value, expire, path, domain);
-	setcookie("emailAddress", "you@email.com", time()+60*60*24, "/", "192.168.1.116");
+	//setcookie("emailAddress", "you@email.com", time()+60*60*24, "/", "192.168.1.142");
 
 		//SstrTRcolor vars modified in calendarFunctions.php --> setTRcolor(integer)
 	$strTRcolor 		= "#adbd90"; //darker
 	$strTRcolorAlt 	= "#e9e6d3";	//lighter
 	//include ("calendarFunctions.php");
 
-
-
-
-$bShowDebug = 0; // value of 0 = don't show application debugging; 1 = do show it
+$bShowDebug = 1; // value of 0 = don't show application debugging; 1 = do show it
 $strAppDebug = "<br/>Application debugging data for display during development: ";
 /*
 $strAppDebug .= "<h4>$ _ RQ[pub_id] = '" . $_REQUEST['pub_id'] . "'</h4>";
@@ -104,7 +101,7 @@ else $titleParameter = "holdings on this publication";
 		<![endif]-->
 
 		<!-- 2012-05-30 AJE and CFJ - use standalone favicon rather than catalog server version -->
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" type="image/x-icon"  href="images/favicon.ico" />
 
 		<script type="text/javascript" language="javascript" src="json2.js"></script>
 		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
