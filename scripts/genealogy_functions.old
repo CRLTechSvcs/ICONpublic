@@ -1,0 +1,72 @@
+﻿/*-------------------------------------------------------------*/
+/* AJE piggybacking on calendar_selection_functions.js to test genealogy
+/*-------------------------------------------------------------*/
+
+
+//selectedPubId = selectedPubId.replace('%20', ''); //selectedPubId set in headTagContents.php
+
+$.get("get_genealogy_info.php?pub_id=" +selectedPubId, { 'selectedPubId': selectedPubId }, displayGenealogyTest);
+
+
+function displayGenealogyTest(results, textStatus) {
+	if ((results.search(/Error/i) != -1) || (results.search(/\<b>Notice/i) != -1 )) {
+		document.writeln(results);
+	} else if (results != ""){
+		var relationships = JSON.parse(results);
+//prompt("results=\n" +results+ "\nrelationships.length==" +relationships.length +"\n"+ relationships, relationships); // [object Object]
+		if (relationships.length > 0) {
+			var genealogyHeader = '<div id="genealogyBlockTitle">Publication genealogy</div>';
+var genealogyString = "<ul>";
+			for (var i=0; i < relationships.length; i++) {
+				relType			= relationships[i].rel_type_description;
+				relFrom 		= relationships[i].relationshipFrom; // actually current pub_id
+				relToTitle 	= relationships[i].relationship_to_title;
+				relToID 		= relationships[i].relationship_to_pub_id; // pub_id of related one; actual publications.pub_id; usually LCCN, sometimes OCLC or even ISSN
+				relHREF 		= 'calendar.php?pub_id=' +relToID;
+				relCtrlNum 	= relationships[i].relationship_to_control_num; // usually OCLC number, or some other system control number which is not our pub_id
+				relToISSN		= relationships[i].relationship_to_ISSN;
+genealogyString += '<li>';
+//genealogyString += '<div>';
+					//genealogyString += relFrom + ' ' +relType+ ' relationship to ' +relToTitle;
+					genealogyString += relFrom + ' ' +relType+ ' --&gt; ' +relToTitle;
+					genealogyString += ' (id:<a href="'+relHREF+'" style="text-decoration:underline;">'+relToID+'</a>';
+					if (relToISSN) {
+						genealogyString += ', ISSN:' +relToISSN;
+					}
+					genealogyString += ')';
+genealogyString += '</li>';
+//genealogyString += '</div>';
+			}//end for
+genealogyString += '</ul>';
+
+			//$('<div id="genealogyBlockTitle"><h4>Publication genealogy</h4></div><div id="pub_genealogy">' + genealogyString + '</div>').insertBefore($('h4:contains("Genealogy of paper")')[0]);
+			//$('#genealogy_sandbox').html('<div id="genealogy_sandbox">' + genealogyHeader + '</div>');
+			$('#genealogy_sandbox').html('<span id="genealogy_sandbox">' + genealogyHeader + genealogyString + '</span>');
+
+			var stupidAdjustment = 15;
+			$('#container').height( $('#genealogy_sandbox').outerHeight(true) + stupidAdjustment );
+			$('#content').height( $('#genealogy_sandbox').outerHeight(true) + stupidAdjustment );
+			$('#page').height( $('#genealogy_sandbox').outerHeight(true) + stupidAdjustment );
+			//$('#sidebar').height( $('#genealogy_sandbox').outerHeight(true) - $("#genealogyBlockTitle").outerHeight(true) );
+			$('#sidebar').height( $('#genealogy_sandbox').outerHeight(true) - (stupidAdjustment) );
+
+			var footerOffset 	= $("#footer").offset();
+			//var footerNewTop = $('#header').outerHeight(true) + $('#container').outerHeight(true); // not bad, too small
+			//var footerNewTop = $('#header').outerHeight(true) + $('#container').outerHeight(true) + $('#genealogy_sandbox').outerHeight(true); //way too far
+			var footerNewTop = ($('#header').outerHeight(true) * 1.5) + $('#genealogy_sandbox').outerHeight(true); //
+//alert("content height(): " +$("#content").height()+ "\n genealogy_sandbox height: " +$('#genealogy_sandbox').outerHeight(true)+ "\nfooterNewTop: " +footerNewTop);
+			$("#footer").offset({ top: footerNewTop + stupidAdjustment, left: footerOffset.left });
+
+
+
+
+
+			//resetHeightsAndOffsets( $('.matchingColumn') ); //headTagContents.php
+
+		}//end if relationships
+	} else { // no results
+
+		//alert(selectedPubId+ "\nthere were no relationship results: \nrelationship results = \n'" +results+ "'");
+
+	}//end if-else
+}//end displayGenealogyTest

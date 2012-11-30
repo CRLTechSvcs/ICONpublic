@@ -1,0 +1,90 @@
+#container { width: 1100px; }
+#header { width: 86%; }
+#content { text-align: left; }
+
+#sidebar { width: 30%; }
+#sidebar h4 {  margin-left: 15px; }
+.boxfoot { margin-right: 50px; }
+
+#page {
+	background-color: #ffffff;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	height: 895px;
+	width: 100%;
+}
+
+#selection_control_wrapper { height: 425px; }
+#select_month_label { padding-left: 30px; }
+#select_day_label { padding-left: 60px; }
+
+#year_option { margin-left: 27px;}
+
+/*----------------------------------------*/
+/* Month box style rules (calendar_selection_controls; common factors are in styles.css) */
+/*----------------------------------------*/
+#month_control_wrapper { margin:0px 0px 0px 32px; width: 232px; }
+.month_box {	padding: 8px 0 8px 0; }
+
+#title_date_display { height: 41px; }
+#title_display { padding-left: 31px; }
+#title_info {
+	width: 100%;
+	padding: 20px 20px 0px 20px;
+	margin:0px 10px;
+}
+
+div.not_icon_title p{ margin-top: 10px; }
+
+#repository_info {
+	padding: 20px 20px 0px 20px;
+	width: 80%;
+	margin-left: 15px;
+}
+
+
+
+#issue_date_display { padding-left: 41px; }
+
+#issue_info_display {  padding:8px 0px 0px 30px; }
+#inner_issue_info_display { padding: 8px 0 30px 0; }
+
+#page_navigation {  margin-top: 0px; }
+
+#format_table { margin-left: 0px; }
+#format_table td{ width: 280px; }
+
+#repository_table { margin-left: 0px; }
+#repository_table td{ width: 280px; }
+
+#footer_bar { background: none; }
+
+.link_group_container { padding: 0 0 20px 0; }
+
+/*----------------------*/
+/* Timeline style rules (calendar_selection_controls; common factors are in styles.css) */
+/*----------------------*/
+.timeline {
+	margin: 0px 24px;
+	padding:0em 0em 1.3em 0em;
+}
+.timeline li a .count { bottom: 7px; }
+
+/*----------------------------------------*/
+/* jQuery UI Datepicker plugin style rules*/
+/*----------------------------------------*/
+.ui-datepicker-title { width: 104.5%; }
+.ui-datepicker-calendar { width: 60%; }
+.ui-datepicker-calendar th {
+	background-color: #4e4f7f;
+	color: #dfe2e6;
+	border: 1px solid #000000;
+	width: 20px;
+	text-align: center;
+	padding-left: 6px;
+}
+
+span .ui-state-default { font-weight: normal; color: #00224c; }
+
+

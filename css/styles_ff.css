@@ -1,0 +1,59 @@
+#container { width: 920px; }
+#header { width: 100%; }
+#content_wrapper { width: 100%; }
+#content {
+	margin: 0 auto;
+	height: 880px;
+	width: 100%;
+}
+#sidebar { width: 26%; }
+#page {
+	background-color: #ffffff;
+	padding: 0px;
+	width: 68.5%;
+	border: 5px solid #2d2d4d;
+	height: 100%;
+	height: 895px;
+}
+
+#select_month_label { padding-left: 25px; }
+#select_day_label { padding-left: 65px; }
+#year_option { margin-left: 32px; margin-top: 12px; }
+
+#month_control_wrapper { margin:0px 0px 0px 22px; width: 225px; }
+.month_box { padding: 8px 0px 2px 0px; }
+
+#title_date_display { height: 21px; }
+#title_display { padding-left: 21px; }
+#title_info { padding: 0px 10px; }
+
+#repository_info { padding: 0px 10px; }
+
+#issue_date_display { padding-left: 24px; }
+
+#issue_info_display { padding:10px 0px 0px 21px; }
+#inner_issue_info_display { padding: 8px 0 0 0; }
+
+#page_navigation { margin-top: 20px; }
+
+#format_table td{ width: 270px; }
+
+#repository_table td{ width: 270px; }
+
+/*----------------------*/
+/* Timeline style rules (calendar_selection_controls; common factors are in styles.css) */
+/*----------------------*/
+.timeline {
+	margin: 0px auto;
+	padding:0em 0em 1.3em 1.7em;
+}
+.timeline li a .count { bottom: 0px; }
+
+/*----------------------------------------*/
+/* jQuery UI Datepicker plugin style rules*/
+/*----------------------------------------*/
+span .ui-state-default { font-weight: normal; color: #ffffff; }
+
+.ui-datepicker-title { width: 235px; }
+
+
