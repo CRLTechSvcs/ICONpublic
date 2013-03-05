@@ -14,7 +14,7 @@
 	// QUERY DATABASE FOR RELATIONSHIP DATA
 
 		//order by pub_bgnDate
-		$query = 'SELECT r.relationship_from, r.rel_type_id, t.rel_type_description, r.relationship_to_title, r.relationship_to_pub_id, r.relationship_to_control_num, r.relationship_to_ISSN FROM bib_relationships r, bib_relationship_types t, publications p WHERE r.rel_type_id = t.rel_type_id AND r.relationship_to_pub_id = p.pub_id AND (r.relationship_from = ? OR r.relationship_to_pub_id = ?) ORDER BY p.pub_bgnDate';
+		$query = 'SELECT r.relationship_from_pub_id, r.rel_type_id, t.rel_type_description, r.relationship_to_title, r.relationship_to_pub_id, r.relationship_to_control_num, r.relationship_to_ISSN FROM bib_relationships r, bib_relationship_types t, publications p WHERE r.rel_type_id = t.rel_type_id AND r.relationship_to_pub_id = p.pub_id AND (r.relationship_from_pub_id = ? OR r.relationship_to_pub_id = ?) ORDER BY p.pub_bgnDate';
 
 		//order by relationship_from:
 		// ok but really want to work in genealogy_functions.js to highlight the requested pub_id first

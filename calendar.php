@@ -4,8 +4,6 @@
 	header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 	header("Expires: Sat, 15 Oct 2011 00:00:00 GMT"); // Date in the past
 
-	include ("debugJunk.php");
-
 ?>
 
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>

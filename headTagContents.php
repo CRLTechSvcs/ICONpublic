@@ -1,20 +1,20 @@
-<head>
+﻿<head>
 	<title>International Coalition on Newspapers (ICON)</title>
 
 
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	<link rel="stylesheet" type="text/css" href="css/styles_ff.css" />
 	<!--[if IE]>
-		<link rel="stylesheet" type="text/css" href="styles_ie.css" />
+		<link rel="stylesheet" type="text/css" href="css/styles_ie.css" />
 	<![endif]-->
 
 	<link rel="shortcut icon" type="image/x-icon"  href="images/favicon.ico" />
 
-	<script type="text/javascript" language="javascript" src="scripts/json2.js"></script>
-	<script type="text/javascript" language="javascript" src="scripts/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" language="javascript" src="scripts/jquery-ui-1.8.9.custom.min.js"></script>
+	<script type="text/javascript" language="javascript" src="javascripts/json2.js"></script>
+	<script type="text/javascript" language="javascript" src="javascripts/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" language="javascript" src="javascripts/jquery-ui-1.8.9.custom.min.js"></script>
 
-	<script type="text/javascript" language="javascript" src="scripts/initialize_variables.js"></script>
+	<script type="text/javascript" language="javascript" src="javascripts/initialize_variables.js"></script>
 	<script type="text/javascript" language="javascript">
 			//Strip spaces out of the pub_id passed in from bib rec: PHP writes out the JS values
 			<?php
@@ -28,9 +28,10 @@
 				echo 'selectedPubIdWithoutSpace = "' . $selectedPubIdWithoutSpace .  '";';
 				echo 'selectedPubId = "' . $selectedPubId .  '";';
 			?>
+			//alert(selectedPubId);
 	</script>
-	<script type="text/javascript" language="javascript" src="scripts/calendar_selection_functions.js"></script>
-	<script type="text/javascript" language="javascript" src="scripts/genealogy_functions.js"></script>
+	<script type="text/javascript" language="javascript" src="javascripts/calendar_selection_functionsORIGINAL.js"></script>
+	<script type="text/javascript" language="javascript" src="javascripts/genealogy_functions.js"></script>
 
 	<script type="text/javascript" language="javascript">
 			/* AJE 2012-11-21
