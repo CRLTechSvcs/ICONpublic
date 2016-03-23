@@ -1,0 +1,128 @@
+﻿/*
+2015-06-08
+samples for D3 visualizations / SVG renderings, as used in various tutorials, such as at
+http://bl.ocks.org/mbostock/3886208
+*/
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  /* stroke: #ff0000; */
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  /* display: none;
+  AJE: 2015-06-15 original sample hid axis line */
+}
+
+.x.axis text{
+    /*
+      AJE: class tick seems to be added by D3 ; or is part of SVG?
+        - rotate the text, see test_10badRotation.html
+    */
+      /* transform: rotate(-45deg); /* 90deg was orig */
+	    /* transform-origin: left top 0; */
+	    /* if no transform-origin: labels shifted left (with positive rotate value)
+	    , and go up */
+	    /*transform-origin: right bottom 50;*/
+}
+
+.y.axis {
+  /*
+  # AJE tests only
+  stroke: #000000;
+  z-index:10; */
+}
+
+/***********************************
+AJE 2015-06-11 */
+/* works */
+.yAxisLabel {
+  /* background-color:#a8a8a5; // not applied to SVG.TEXT elements */
+  fill:#a8a8a5; stroke:#000000;
+  font-size:18px; margin:0; text-align:right; font-weight:normal;}
+.legendText {font-size:18px; margin:0; text-align:right; font-weight:bold;}
+.pieSliceLabel {
+  font-size:18px; font-weight:bold;
+  text-anchor:middle;
+}
+
+/* .legend{ float:right; } */
+
+g .legend{
+  position: relative;
+  z-index:10;
+}
+
+/*************************
+atyles for tooltips, which depend on
+  d3.tip
+  at: http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js
+*/
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  /* padding: 12px; */
+  background: rgba(0, 0, 0, 0.8);
+  /* color: #fff; */
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  /*color: rgba(0, 0, 0, 0.8);*/
+  color:#ffffff;
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+
+/****************************************/
+/* pie chart example */
+
+.arc path {
+  stroke: #fff;
+}
+
+
+/****************************************/
+/* line chart example */
+.line_chart_line {
+  fill: none;
+  stroke: #485b2e;
+  stroke-width: 5px;
+}
+.line_chart_area{
+  fill: #adbd90;
+}
+
+/****************************************/
+/* links that show/hide the D3 charts */
+#visualizations_canvas {
+  height:100%; width:100%;
+  display:none; /* script will show the whole div when conditions met */
+}
+.d3_chart_canvas {
+ width:100%;
+ height:100%;
+}

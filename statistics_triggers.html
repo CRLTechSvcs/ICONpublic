@@ -1,0 +1,198 @@
+
+<!--begin statistics_triggers.html-->
+<h4 class="statistics_header_text">
+  ICON statistics visualizations
+</h4>
+<ul id="statistics_trigger_list">
+  <!--triggers given click functions later at end of file-->
+
+  <li id="country_count_trigger" class="statistics_trigger">
+    newspaper country
+  </li>
+    <!--country_count_charts_list shown/hidden by country_count_trigger click-->
+    <ul id="country_count_charts_list" class="charts_list" style="display:none;">
+      <li id="country_count_trigger_pieWorld" class="chart_trigger">pie chart: world</li>
+      <li id="country_count_trigger_pieUSA" class="chart_trigger">pie chart: United States</li>
+      <!--<li id="country_count_trigger_barChart" class="chart_trigger">bar chart</li>-->
+
+      <!--
+      FOR EACH NEW MAP, ADD A CANVAS IN statistics_chart_canvas.html,
+            add the canvas ID to the 'charts' array in statistics.js,
+            add a call in statistics_countries.js to google_visualization_map() in googleChartsAPIfunctions.js,
+            add a trigger function in this file to chartDisplay() passing the appropriate canvas ID
+      -->
+      <li id="country_count_trigger_worldMap" class="chart_trigger">map: world</li>
+      <li id="country_count_trigger_NorthAmericaMap" class="chart_trigger">map: North America</li>
+      <li id="country_count_trigger_CanadaMap" class="chart_trigger">map: Canada</li>
+<!--      keep this link, search the ID for comments below
+      <li id="country_count_trigger_UnitedStatesMetro" class="chart_trigger">map: United States metro</li>-->
+      <li id="country_count_trigger_UnitedStatesMap" class="chart_trigger">map: United States</li>
+      <li id="country_count_trigger_CentralAmericaMap" class="chart_trigger">map: Central America</li>
+      <li id="country_count_trigger_CaribbeanMap" class="chart_trigger">map: Caribbean</li>
+      <li id="country_count_trigger_SouthAmericaMap" class="chart_trigger">map: South America</li>
+
+      <li id="country_count_trigger_GreatBritainMap" class="chart_trigger">map: Great Britain</li>
+      <li id="country_count_trigger_AllEuropeMap" class="chart_trigger">map: Europe</li>
+      <li id="country_count_trigger_AfricaMap" class="chart_trigger">map: Africa</li>
+      <li id="country_count_trigger_MiddleEastMap" class="chart_trigger">map: Middle East</li>
+      <li id="country_count_trigger_AllAsiaMap" class="chart_trigger">map: Asia</li>
+      <li id="country_count_trigger_OceaniaMap" class="chart_trigger">map: Australia/Oceania</li>
+      <li id="country_count_trigger_AustraliaMap" class="chart_trigger">map: Australia (states)</li>
+    </ul>
+
+  <li id="orgs_count_trigger" class="statistics_trigger">
+    holding organization
+  </li>
+
+  <li id="formats_count_trigger" class="statistics_trigger">
+    issue format
+  </li>
+
+  <li id="years_count_trigger" class="statistics_trigger">
+    issue year
+  </li>
+
+  <li id="languages_count_trigger" class="statistics_trigger">
+    language
+  </li>
+
+  <li id="other_version_trigger"> </li><!--filled by statistics.js BUT as of 2014-08-29 the CSS has it hidden-->
+</ul>
+
+
+<script>
+
+  function hide_country_count_charts_list(){
+    $( "#country_count_charts_list" ).slideUp( "fast" );
+  }//end function
+
+  $("#new_search_trigger").css("list-style-image", "url('')"); //loading image
+  $('#new_search_trigger').click(function(){
+		window.location='search.php';
+	});
+
+
+  /*  AJE 2013-11-08: click functions for chart links: show/hide submenus supporting calls to Google Charts API functions
+    - add slider functionality to statistics triggers list elements to display sublists that can show maps
+    - http://api.jquery.com/slideDown/
+    - http://api.jquery.com/slideUp/
+
+    for each of the triggers: click to show/hide appropriate page sections (javascripts/statistics.js)
+      AJE 2014-08-29: modified + consolidated: statistics_countries has the calls to Google Charts API to actuall build the maps
+  */
+  $("#country_count_trigger").click( function(){
+    if ( $( "#country_count_charts_list" ).is( ":hidden" ) ) {
+      $( "#country_count_charts_list" ).slideDown( "slow" );
+    } else {
+      $( "#country_count_charts_list" ).slideUp( "slow" );
+    }
+    // they should pick a specific country before any map will show
+    // chartDisplay("#statistics_chart_canvas_countries");
+    reportDisplay("#countries_report");
+  });
+
+
+  $( "#country_count_trigger_pieWorld" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_pieWorld");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_pieUSA" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_pieUSA");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_worldMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_wholeWorldMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_NorthAmericaMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_NorthAmericaMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_CanadaMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_CanadaMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_UnitedStatesMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_UnitedStatesMap");
+    //google_visualization_map('regions', 'us_metro'); //United States, metro areas (do not correspond to states) //this is not awful, but needs a better data set, maybe a city-country array
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_CentralAmericaMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_CentralAmericaMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_CaribbeanMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_CaribbeanMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_SouthAmericaMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_SouthAmericaMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_NorthernEuropeMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_NorthernEuropeMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_GreatBritainMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_GreatBritainMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_AllEuropeMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_AllEuropeMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_AfricaMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_AfricaMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_MiddleEastMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_MiddleEastMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_AllAsiaMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_AllAsiaMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_OceaniaMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_OceaniaMap");
+    reportDisplay("#countries_report");
+  });
+  $( "#country_count_trigger_AustraliaMap" ).click(function () {
+    chartDisplay("#statistics_chart_canvas_AustraliaMap");
+    reportDisplay("#countries_report");
+  });
+  //END MAPS ('newspaper country' sub-list)
+
+
+  $("#orgs_count_trigger").click( function(){
+    hide_country_count_charts_list();
+    chartDisplay("#statistics_chart_canvas_orgs");
+    reportDisplay("#organizations_report");
+    // 2014-08-29 google_visualization_chart now called by prepareOrganizations as soon as the data is ready
+  });
+  $("#formats_count_trigger").click( function(){
+    hide_country_count_charts_list();
+    chartDisplay("#statistics_chart_canvas_formats");
+    reportDisplay("#formats_report");
+    // 2014-08-29 google_visualization_chart now called by prepareFormats as soon as the data is ready
+  });
+  $("#years_count_trigger").click( function(){
+    hide_country_count_charts_list();
+    chartDisplay("#statistics_chart_canvas_years");
+    reportDisplay("#years_report");
+    // 2014-08-29 google_visualization_chart now called by prepareYears as soon as the data is ready
+  });
+  $("#languages_count_trigger").click( function(){
+    hide_country_count_charts_list();
+    chartDisplay("#statistics_chart_canvas_languages");
+    reportDisplay("#languages_report");
+    // 2014-08-29 google_visualization_chart now called by prepareLanguages as soon as the data is ready
+  });
+  $("#other_version_trigger").click( function(){ //go to the other page version
+     (b_is_static_page) ? location.href = liveAddress : location.href = staticAddress;
+  });
+
+
+</script>
+
+<!--end statistics_triggers.html-->
