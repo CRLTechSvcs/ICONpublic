@@ -99,7 +99,7 @@ $(document).ready(function(){
 		var calFG = "#2d2d4d";
 		var calBG = "#adbd90";//"#adbd90"; //olive //"#4e4f7f"; lighter purple
 		var formMethod = "GET";
-		var formLinkText = "See repositories, dates and formats held, etc.";
+		var formLinkText = "See organizations, dates and formats held, etc.";
 
 		var inputType = "hidden";//change to 'text' for testing
 		var	formHTML = '<form name="calendarForm" id="calendarForm" ';

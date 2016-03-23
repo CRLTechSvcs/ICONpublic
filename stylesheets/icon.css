@@ -5,18 +5,503 @@
 	CRL Colors - from new template 2009
 	see http://staff.crl.edu/style-guide/
 	Primary
-		dark olive: 	#8ca061
+		dark olive:	#8ca061
 		navy bluish:	#2d2d4d
-		beige:			#e9e6d3 = RGB 233 230 211 ? not really
-		light olive:	#adbd90
-		mud black: 		#303030
-		orange: 		#e97100
+		beige:			#E9E6D3 = RGB 233 230 211 ? not really
+		light olive:	#ADBD90
+		mud black:		#303030
+		orange:		#E97100
 	Secondary
 		salmon:			#da5856
 		dark green:		#485b2e
 		dark lavender:	#4e4f7f
 
+2015-11-04 11:41:51
+new template 2015: http://www.crl.edu/crl-brand-guidelines
+    We're recommending the following set of basic fonts:
+    'Open Sans',Helvetica or sans-serif font (non-bolded) for headlines and page names
+    "Helvetica Neue",Arial,Helvetica or sans-serif font for body text
+so: the declarations :
+  font-family:Georgia,"Times New Roman",Times,serif;
+  font-family:Arial Unicode MS, Arial, Verdana, Geneva, Helvetica, sans-serif;
+respectively replace with:
+  font-family:'Open Sans',Helvetica,sans-serif;
+  font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+
+
 */
+
+/* -----------------------------------------
+   Global
+----------------------------------------- */
+
+body {
+	background:#E5EADE url(../images/body.gif) repeat-y scroll left top;
+	font-size:12px;
+}
+
+.header {margin-top:2.0em; margin-bottom:2.0em; }
+
+.iconTitle {font-size:24px; margin:0; text-align:right; font-family:'Open Sans',Helvetica,sans-serif; font-weight:normal;}
+.iconMotto {margin:0; font-family:'Open Sans',Helvetica,sans-serif; font-weight:normal;}
+.iconTitleUnaligned {font-size:24px; margin:0; font-family:'Open Sans',Helvetica,sans-serif; font-weight:normal;}
+.iconTitleLong {color:#958f5c;}
+.iconTitleShort {color:#343354;}
+
+.contentArea {
+	border:1px solid #A8A8A5;
+	/*background-color:#E8E6D3;*/
+	background:#E8E6D3 url(../images/main_gradient.png) repeat-y scroll left top;
+}
+.mainContentArea { /* class also defined in app.css with light gray #DFE2E6 */
+	/*background-color:#E8E6D3;*/
+	background:transparent;
+
+	/*
+	  border-right:1px solid #A8A8A5;
+	  AJE 2014-03-18 hide this if rightContentArea has border-left; but this only works out for INDEX type pages, not for calendar page
+	  AJE 2015-08-12 that border-right was live for a long time -- trying border-left on rightContentArea instead
+	  AJE 2015-10-21 put it back: then tried remove border-left in rightContentArea
+	*/
+	border-right:1px solid #A8A8A5;
+}
+
+.rightContentArea {
+	/* margin-top:20px; */
+	/*
+	  AJE 2014-01-24 added
+	    border-left:1px solid #A8A8A5;
+	  as experiment, not always great with dynamic size of sidebar timeline and charts:
+	  use border-right on mainContentArea instead
+	  - border-left here doesn't show up on calendar pages
+	  AJE 2015-08-12 try again : seems to work
+	  AJE 2015-10-21 removed again after adding collections to sidebar in test
+border-left:1px solid #A8A8A5;
+	*/
+
+}
+.rightContentArea h6 {
+	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+	font-size:1.11em;
+	font-weight:normal;
+	margin-bottom:0.6em;
+	margin-top:15px;
+}
+.rightContentArea a {
+	color:#2D2D4D;
+	font-family:inherit;
+	text-decoration:none;
+}
+#new_search_container {
+	padding-left:0;
+}
+#new_search_label_container {
+	float:left;
+	padding-top:3px;
+}
+#new_search_button_container {
+	float:left;
+	padding-left:10px;
+}
+#new_search_label {
+	text-align:right;
+  color:#00224C;
+  font-size:16px;
+  font-weight:bold;
+}
+#selection_help {
+	line-height:1.5em;
+	top:83px;
+}
+#select_help_button {
+	/*background-color:#675F7F;*/
+	background-color:#DA5856;
+	color:#FFFFFF;
+	font-size:.89em;
+	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+	border:1px solid #E8E6D3;
+	padding:10px;
+	height:36px;
+}
+.panel {
+	border:1px solid #A8A8A5;
+}
+
+
+/* -----------------------------------------
+  AJE 2014-01-15
+  styles added for new landing page (index.html), and later for other info-type pages
+--------------------------------------------*/
+.landing_page_content{
+  padding:30px;
+  /* border-right:1px solid #A8A8A5; /* see also rightContentArea border-left + mainContentArea border-right */
+}
+.landing_masthead{
+  margin-bottom:10px;
+}
+.landing_content_text{
+  /* padding-top:20px; */
+  line-height:150%;
+}
+.landing_list {
+	padding:15px; /* 30px was ok */
+}
+.landing_list_header {
+	list-style-type:none;
+}
+.landing_right_topic {
+	text-align:center;
+	color:#00224C;
+	font-weight:bold;
+	font-size:14px;
+	letter-spacing:1.5px;
+	margin-top:25px;
+}
+.empty_field{
+  font-size:14px;
+  font-weight:bold;
+  color:#00224C;
+}
+
+
+/***********************************************
+  these styles from CJ were in search.php on 2013-10-04; were specific to that page but need to live here; some are overridden elsewhere
+***********************************************/
+/* -----------------------------------------
+  STYLES UNIQUE TO THIS PAGE (search.php)
+--------------------------------------------
+  Links
+--------------------------------------------*/
+a:link { color:#00224c; }
+a:active{ color:#00224c; }
+a:visited { color:#761744;  }
+a:hover  { color:#00224c; text-decoration:underline;  }
+/*--------------------------------------------
+  Search container and controls
+-------------------------------------------- */
+input[type="text"] {
+	color:#181818;
+}
+select {
+	font-family:inherit;
+	font-size:.85em;
+	height:32px;
+	padding:6px;
+	border:1px solid #CCCCCC;
+}
+#basic_search_dropdown {
+	color:#181818;
+}
+#basic_search_dropdown option {
+	color:#999999;
+}
+#state_country_dropdown {
+	color:#999999;
+}
+#state_country_dropdown option {
+	color:#999999;
+}
+#language_dropdown {
+	color:#999999;
+}
+#language_dropdown option {
+	color:#999999;
+}
+
+#search_form {
+	float:left;
+	width:100%;
+}
+#top_search_form {
+	margin-top:30px;
+	/*margin-bottom:15px;*/
+}
+#top_search_results {
+	margin-top:30px;
+	margin-bottom:15px;
+}
+#search_type_label {
+	font-size:14px;
+	font-weight:bold;
+	color:#00224C;
+}
+#search_results_label {
+	font-size:14px;
+	font-weight:bold;
+	color:#00224C;
+	margin-bottom:0;
+	text-align:left;
+	padding-left:20px;
+}
+#search_type_link_container {
+	margin:20px 0 15px 0;
+}
+#search_type_link_container a {
+	color:#00224C;
+	font-style:italic;
+	text-decoration:underline;
+}
+#sort_by_label {
+	font-size:14px;
+	font-weight:bold;
+	color:#00224C;
+	text-align:right;
+	margin-bottom:0;
+}
+.search_label {
+	font-weight:bold;
+	font-size:.85em;
+}
+#search_help_container {
+	/*padding-left:0;*/
+}
+#search_help {
+	top:83px;
+}
+.searchbox {
+	font-size:.85em;
+	font-style:normal;
+}
+.searchbox.placeholder {
+	color:#999999;
+}
+#keyword_search {
+	margin-bottom:15px;
+}
+#search_results {
+	display:none;
+	clear:both;
+	background-color:#FFFFFF;
+	border:2px solid #343354;
+	min-height:100px;
+}
+#outer_search_list_container {
+	padding:15px;
+}
+#search_results_list_container {
+	/*margin-top:15px;*/
+	margin-bottom:15px;
+	max-height:500px;
+	overflow:auto;
+}
+#search_results_list {
+	list-style-type:none;
+	border:none;
+	line-height:normal;
+}
+#search_results_list li {
+	margin-bottom:5px;
+	text-indent:-20px;
+	margin-left:10px;
+}
+.feedback_button{
+  text-align:center;
+  padding:5px;
+}
+#go_button, #clear_button, #search_icon_button, .feedback_button {
+	background-color:#675F7F;
+	color:#FFFFFF;
+	font-size:.89em;
+	border:1px solid #BFCCA8;
+}
+#go_button:hover, #clear_button:hover, #search_icon_button:hover, .feedback_button:hover {
+	background-color:#24233B;
+	color:#FFFFFF;
+	text-decoration:none;
+}
+#sort_button_container {
+	margin-bottom:0;
+}
+#sort_title_button,
+#sort_from_year_button,
+#sort_to_year_button {
+	background-color:#675F7F;
+	color:#FFFFFF;
+	font-size:.89em;
+	border:1px solid #BFCCA8;
+	padding:10px 13px;
+	height:36px;
+	text-decoration:none;
+}
+#sort_help_button {
+	background-color:#8CA061;
+	color:#FFFFFF;
+	font-size:.89em;
+	border:1px solid #BFCCA8;
+	padding:10px 13px;
+	height:36px;
+	text-decoration:none;
+}
+#sort_title_button:hover,
+#sort_from_year_button:hover,
+#sort_to_year_button:hover {
+	background-color:#24233B;
+	color:#FFFFFF;
+	text-decoration:none;
+}
+#sort_help_button:hover {
+	background-color:#70814D;
+	color:#FFFFFF;
+	text-decoration:none;
+}
+#formats_chart_help_link,
+#collection_links_help_link {
+	color: #999;
+	font-size: 15px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+#timeline_help_button,
+#orgs_chart_help_button,
+#formats_chart_help_button,
+#collection_links_help_button {
+	background-color: transparent;
+	height: 24px;
+	padding: 4px;
+	width: 24px;
+	text-decoration:none;
+	border:none;
+}
+#timeline_help_button:hover,
+#orgs_chart_help_button:hover,
+#formats_chart_help_button:hover,
+#collection_links_help_button:hover {
+	background-color:transparent;
+	text-decoration:none;*/
+	border:0;
+	box-shadow:none;
+}
+.title_cell {
+	padding:1px 10px;
+}
+#message_container {
+	clear:both;
+	display:none;
+	margin:0 0 35px 0;
+}
+#message {
+	color:#556C88;
+  font-family:Arial;
+  font-size:1.05em;
+  font-style:italic;
+  text-align:center;
+  padding-top:0;
+}
+/***********************************************
+  end CJ styles from search.php
+***********************************************/
+
+
+
+
+
+/***********************************************
+  statistics reports (linked in footerCRL.html as of 2013-10-04)
+***********************************************/
+
+.statistics_header_text{ margin:0; font-family:'Open Sans',Helvetica,sans-serif; color:#343354; }
+.statisticsData{ font-weight:bold; font-family:'Helvetica Neue',Arial,Helvetica or sans-serif; /* font-size:1.2em; */ color:#00224C; }
+#statistics_summary_list {font-weight:bold; color:#343354; padding-left:50px;}
+#statistics_trigger_list { font-weight:bold; font-size:1.1em; float:left; color:#343354; padding-left:50px;}
+.statistics_trigger {
+  list-style-image:url('../images/loading_titles.gif'); /* gets changed by javascript */
+}
+.statistics_trigger:hover {text-decoration:underline; cursor:pointer;}
+#other_version_trigger {display:none; /* 2014-08-29 maybe this will be useful someday but the LIVE stats basically never load */ }
+.charts_list{ padding-left:20px;}
+.chart_trigger:hover {text-decoration:underline; cursor:pointer;}
+
+#loadedVersionNote{font-weight:bold;}
+.statistics_chart_canvas{
+  /*font-size:1.2em; font-weight:bold;*/
+  /*
+    background:#E8E6D3 url(../images/main_gradient.png) repeat-y scroll left top;
+    background-image:url('../images/main_gradient.png');
+    background-color:#d1cfbd; /* b7b7b7 is gray; 2b2a45 is the dark purple
+    background-color:#d1cfbd;
+  */
+
+  display:none; /* 2014-08-29 they all start hidden */
+
+  background:transparent;
+
+  font-family:'Open Sans',Helvetica,sans-serif;
+  text-align:left;
+
+	color:#2b2a45; /* was d1cfbd */
+	padding-top:5px;
+	border-right:solid #b7b7b7 1px;
+}
+.statistics_type_header{
+  font-size:1.2em; font-weight:bold; font-family:'Open Sans',Helvetica,sans-serif;
+  /* background-color:#b7b7b7; /* 2b2a45 is the dark purple */
+	color:#2b2a45; /* was d1cfbd */
+	display:block;
+  padding-top:10px;
+}
+.statistics_type_subheader{
+	font-size:1.2em; font-weight:normal; font-family:'Open Sans',Helvetica,sans-serif;
+  /*text-align:center;*/
+  /* background-color:#b7b7b7; /* 2b2a45 is the dark purple; b7b7b7 is dark grey */
+	color:#2b2a45; /* was d1cfbd */
+  display:block;
+  padding-top:5px;
+  padding-bottom:5px;
+	border-top:3px solid #2d2d4d;
+}
+.stats_small_subhead{ padding-bottom:15px; }
+.statistics_info_link{font-weight:bold; font-family:'Open Sans',Helvetica,sans-serif; color:#2b2a45; }
+
+
+.pb_report_title {font-size:24px; font-weight:normal; font-family:'Open Sans',Helvetica,sans-serif; padding:15px;  }
+
+#pb_report_header {
+  padding-bottom:5px; line-height:1.5;
+}
+.pb_report_header_result {
+  text-decoration:underline;
+  background-color:#ffffff;
+  padding:2px;
+}
+
+#click_title_hint{
+  display:none;
+}
+
+/***********************************************
+  END statistics reports (linked in footerCRL.html as of 2013-10-04)
+***********************************************/
+
+
+
+
+
+
+.boxfoot {
+	border-top:1px solid #898c80;
+	margin-top:1em;
+	padding-top:5px;
+	padding-bottom:20px;
+}
+.panel.boxfoot {
+	border-color:#898C80;
+	border-style:solid none none;
+	border-width:1px medium medium;
+	margin-top:1em;
+	padding-bottom:20px;
+	padding-top:5px;
+	background:none;
+}
+.boxfoot a.more {
+	float:right;
+	font-weight:bold;
+	font-size:.85em;
+	margin-right:0px;
+	font-family :Arial Unicode MS, Arial, Verdana, Geneva, Helvetica, sans-serif;
+}
+
+.loading {margin:auto; text-align:center;}
+.img loading {vertical-align:middle;}
 
 
 
@@ -24,32 +509,91 @@
 
 #content {
 	clear:both;
-	background-color: #bfcca8;
+	background-color:#ADBD90;
 	border:1px solid #a8a8a5;
 	position:relative;
 	z-index:10;
 	width:100%;
-	height: 880px;
+	height:880px;
 }
-#sidebar {	background-color:#bfcca8; color: #222222;
+#sidebar {	background-color:#ADBD90; color:#000000;
 	clear:right; float:right;
 	width:190px;
 	padding:0px 20px 40px 20px;
-	margin-left: 0px;
+	margin-left:0px;
 }
-#sidebar h4 {font-size:1.3em; margin-top: 15px; margin-bottom:0.6em; font-family:Georgia,"Times New Roman",Times,serif; font-weight:normal;}
-#sidebar p {font-family:Georgia,"Times New Roman",Times,serif; margin-bottom:8px; }
+#sidebar h4 {font-size:1.3em; margin-top:15px; margin-bottom:0.6em; font-family:'Helvetica Neue',Arial,Helvetica,sans-serif; font-weight:normal;}
+#sidebar p {font-family:'Helvetica Neue',Arial,Helvetica,sans-serif; margin-bottom:8px; }
 #sidebar a {color:#2d2d4d; text-decoration:none; font-family:inherit;}
 #sidebar a:hover {color:#414169; text-decoration:underline;}
-.sidebar_link { text-decoration: underline; font-style: italic; margin: 0px; padding: 0px; }
+.sidebar_link { text-decoration:underline; font-style:italic; margin:0px; padding:0px; }
 
-#left_navbar {
+#sidebar_charts {
+    /* container for both organizations and formats sidebar charts_list;
+      started out matching timeline_header, got more complex */
+	/*margin-top:25px;*/
+	  /* not like timeline_header:background-color:#f3f7f6; */
+	background:transparent;
+  display:inline; /* if block, doesn't show corectly */
+	overflow:hidden;
+	position:relative;
+  top:-18px;
+  z-index:5;
+}
+.chart_sidebar_container { /* containers, individual charts + captions */
+  overflow:hidden;
+}
+#orgs_chart_sidebar_container, #formats_chart_sidebar_container { /* caption and chart */
+  display:block;
+  visibility:inherit;
+  /* border-top:1px solid #a8a8a5; */
+}
+.chart_sidebar_caption { /* just the titles; match timeline_header */
+  text-align:center;
+	color:#00224C;
+	font-weight:bold;
+	font-size:16px;
+	letter-spacing:1.5px;
 	float: left;
-	width: 100%;
+}
+#orgs_chart_help_container {
+	float: right;
+	height: 24px;
+	/*margin-right: 10px;
+	margin-top: 20px;
+	display: none;*/
+}
+#formats_chart_help_container,
+#collection_links_help_container {
+	float: right;
+	height: 24px;
+	/*margin-right: 10px;
+	margin-top: 20px;
+	display: none;*/
+}
+.sidebar_separator{
+  border-top:1px solid #a8a8a5;
+  width:300px;
+  position:relative;
+  left:-20px;
+}
+#orgs_chart_canvas_sidebar, #formats_chart_canvas_sidebar { /* where Google actually draws the charts */
+  display:block; /* retain */
+  overflow:hidden;
+	position:relative;
+  top:-18px;
+}
+.reveal-modal {
+	line-height:1.5;
 }
 
-.boxfoot {border-top:1px solid #898c80; margin-top:1em; padding-top:5px; padding-bottom:20px;}
-.boxfoot a.more{float:right; font-weight:bold; margin-right:13px;}
+
+#left_navbar {
+	float:left;
+	width:100%;
+}
+
+
 
 #page {
 	padding:20px 50px 50px 50px;
@@ -57,116 +601,609 @@
 }
 #page h3 {margin-top:2.0em;}
 
+#message {
+	color:#556C88;
+  font-family:Arial;
+  font-size:1.05em;
+  font-style:italic;
+  text-align:center;
+  padding-top:2em;
+}
+
 .pub_data_header{
-	float: left;
-	background-color: #2d2d4d;
-	color: #ffffff; font-family: Arial; font-weight: bold; line-height: 1.4em;
+	float:left;
+	background-color:#2d2d4d;
+	color:#ffffff; font-family:Arial; font-weight:bold; line-height:1.4em;
 	padding:10px 0px 10px 21px;
 	height:21px;
 	width:97%;
 }
-.pub_data_content{ background-color: #ffffff; font-family: Georgia; width: 100%; float:left;}
-.pub_data_content ul { display: inherit; }
+/*.pub_data_content{ background-color:#ffffff; font-family:Georgia; width:100%; float:left;}*/
+.pub_data_content ul {
+	list-style-position:inside;
+	list-style-type:disc;
+}
 #genealogy_list { padding-bottom:5px;}
-
-
 #title_date_display {
-	font-family: Arial;
-	font-weight: bold;
-	background-color: #2d2d4d;
-	color: #ffffff;
-	padding: 10px 0 10px 0;
-	line-height: 1.4em;
+	font-family:Arial;
+	font-weight:bold;
+	background-color:#2d2d4d;
+	color:#ffffff;
+	padding:10px 0 10px 0;
+	line-height:1.4em;
 }
-#title_display { float: left; }
+#title_display { float:left; }
 #title_info {
-	background-color: #ffffff;
-	border: 1px solid #898c80;
-	font-family: Georgia;
+	background:transparent;
+	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+	padding:15px;
+	margin-top:8px;
 }
-.title_section_first { margin: 0px; }
-.title_section { margin: 10px 0 0 0; }
-.title_section  ul { margin: 0px; padding: 0px; font-family: Georgia; }
-.title_section  li { margin-left: 15px; padding-left: 3px; font-family: Georgia; }
+.title_section_first {
+	font-size:12px;
+  margin:0;
+}
+.title_section_first ul {
+	 margin:5px 0 0 0;
+	 padding:0px;
+	 font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+.title_section_first li {
+	 margin-left:15px;
+	 /*padding-left:3px; */
+	 font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+	 font-size:12px;
+	 line-height:16px;
+}
+.title_section {
+	margin:0;
+	font-size:12px;
+}
+.title_section ul {
+	 margin:5px 0 0 0;
+	 padding:0px;
+	 font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+.title_section li {
+	 margin-left:15px;
+	 /*padding-left:3px; */
+	 font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+	 font-size:12px;
+	 line-height:16px;
+}
+.non-table_list_item {
+	padding-left:3px;
+}
+.title_section table {
+	border:none;
+	border-collapse:collapse;
+	margin-bottom:0;
+	width:100%;
+}
+.title_section td {
+	background:transparent;
+}
+.title_heading {
+	color:#00224C;
+	font-weight:bold;
+	font-size:13.5px;
+	margin-top:20px;
+}
+.not_icon_title {
+	margin-bottom:0;
+}
+#bib_id_holdings_row, #collections_row {
+	margin-left:0;
+}
+#collection_sidebar_box { display:block; /* 2015-10-22 ; usually are no collections, so hide the whole box  */ }
+#bib_id_container li, #collections_container li {
+	font-size:12px;
+	line-height:14px;
+}
+/* 2015-10-13 styles for collections_container */
+.edesiderata {
+  clear:both;
+  font-size:12px; margin:0; padding:0;
+}
+.collection_title{ font-weight:normal; font-style:italic;}
+/* end styles for collections_container */
 
-#add_ref { padding: 10px 10px 0 10px; font-size: 11px; }
-#add_ref a { text-decoration: underline; }
-.add_ref_text { margin: 10px 0 10px 0; }
+/*
+  2015-10-23
+  progressBar after: http://workshop.rs/2012/12/animated-progress-bar-in-4-lines-of-jquery/
+*/
+#pb_report_progressBar {
+    width: 100%;
+    /* height: 15px; */
+    height: 5px;
 
-#repository_info { background-color: #ffffff; border: 1px solid #898c80;  }
-#repository_info a { text-decoration: underline; }
+    border: 1px solid #da5856;
+    /* background-color: #485b2e; # testeed */
+    background-color:#2d2d4d;
+    color: #fff;
+    font-weight:bold;
+}
+#pb_report_progressBar div {
+    height: 100%;
+    /* color: #fff; */
+    text-align: right;
+    line-height: 15px; /* same as #progressBar height if we want text middle aligned */
+    width: 0px; /* to start with */
+    background-color: #0099ff;
+}
 
-#issue_date_display { float: left; }
+
+.holdings_heading {
+	color:#00224C;
+	font-weight:bold;
+	font-size:13.5px;
+	margin-top:10px;
+	clear:both;
+}
+#zero_date_holdings_container {
+	/* padding-left:0; #AJE changed 2014-09-10 18:28 */
+	padding-left:10;
+}
+.zero_date_org{
+	list-style-type:none;
+	font-weight:normal;
+	margin-top:5px;
+	font-size:12px;
+}
+.zero_date_org_name{
+  text-decoration:underline;
+  font-weight:bold;
+}
+.zero_date_summary_statement{
+	list-style-type:none;
+	background:none;
+	font-weight:normal;
+	font-size:12px;
+}
+#id_table {
+	background:transparent;
+	margin-bottom:0;
+	border:none;
+	width:100%;
+}
+#id_table tr {
+	background:transparent;
+}
+#id_table td {
+	background:transparent;
+	color:#00224C;
+	line-height:14px;
+}
+.id_label {
+	font-size:12px;
+	padding:0;
+	padding-right:5px;
+	width:22%;
+}
+.id_value {
+	font-size:12px;
+	padding:0 0 0 1px;
+}
+.extra_id {
+	margin-top:3px;
+	font-size:12px;
+}
+#holdings_info_container ul {
+	list-style-type:none;
+	margin-top:20px;
+}
+#holdings_info_container li {
+	font-size:12px;
+	line-height:16px;
+}
+#holdings_info_heading {
+	font-size:14px !important;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+#add_ref_link_container {
+	padding-top:5px;
+}
+#add_ref_link {
+	text-decoration:underline;
+	color:#00224C;
+	font-size:12px;
+}
+.add_ref_text {
+	margin:5px 0 0;
+	font-size:12px;
+	line-height:16px;
+}
+#org_info_container {
+	width:577px;
+	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+#org_info {
+	background:transparent;
+	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+	padding:0 15px 15px 15px;
+}
+#org_info p {
+	font-size:12px;
+	line-height:16px;
+	margin-bottom:0;
+}
+#org_info p a {
+	text-decoration:underline;
+	font-size:12px;
+}
+.org_info_left ul,
+.org_info_middle ul,
+.org_info_right ul {
+	list-style-type:none;
+	margin-left:10px;
+}
+.org_info_left li,
+.org_info_middle li,
+.org_info_right li {
+	font-size:13px;
+}
+.org_info_right li {
+	font-weight:bold;
+}
+.org_info_left li a {
+	color:#00224C;
+	text-decoration:underline;
+	font-weight:bold;
+}
+#org_section {
+	font-size:12px;
+	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+#org_section ul {
+	 margin:5px 0 0 0;
+	 padding:0px;
+	 font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+	 list-style-type:none;
+}
+#org_section li {
+	 font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+	 font-size:12px;
+	 line-height:16px;
+}
+#org_section li a {
+	text-decoration:underline;
+}
+.org_heading {
+	color:#222222;
+	font-weight:bold;
+	font-size:13.5px;
+	margin-top:10px;
+}
+
+#tab_container {
+  /* AJE 2014-01-24 experiment; orig had no border at all before more dynamic right sidebar with charts
+  border-right:1px solid #A8A8A5; */
+	display:none;
+}
+#pub_tabs #vis_tab_header #vis_tabs a {
+	text-decoration:none;
+}
+#issue_info_tab a {
+	font-size:14px;
+	padding:0;
+}
+#genealogyTab {
+  /* AJE 2014-01-14 PER AMY HIDE GENEALOGY FOR LIVE SITE */
+  visibility:hidden;
+ /* AJE 2014-01-14 following is the original code */
+	overflow:auto;
+	padding:0 10px;
+}
+#issue_date_header {
+	display:none;
+  padding:2px 10px;
+}
+.issue_info_container {
+	margin-top:20px;
+	border:1px solid #DDDDDD;
+	padding:10px 10px 10px 0;
+}
+.no_issues_this_month {
+	background:none;
+	color:#00224c;
+	font-weight:normal;
+}
+.issues_this_date {
+	background-color:#00224C;
+	color:#E8E6D3;
+	font-weight:bold;
+	padding:2px 4px;
+}
+.issues_this_date.deselected {
+	background-color:transparent;
+	color:#6f6f6f;
+	font-weight:normal;
+	padding:2px 4px;
+}
 #issue_info_display {
-	background-color: #ffffff; color: #00224c;
-	font-family: Arial;  line-height: 1.4em;
-	/* height: 400px; AJE 2012-11-27
-		styles_FF original = height: 238px;
-		styles_IE original = height: 260px;
+	background-color:#ffffff; color:#00224c;
+	font-family:Arial;  line-height:1.4em;
+	max-height:500px;
+	overflow:auto;
+	/* height:400px; AJE 2012-11-27
+		styles_FF original = height:238px;
+		styles_IE original = height:260px;
 	*/
-	height: 200px;
 }
-#inner_issue_info_display { display: none; }
+#inner_issue_info_display {
+	display:none;
+}
+.issue_info_table {
+	border:none;
+	margin-bottom:0;
+}
+.issue_info_table tr {
+	background-color:#FFFFFF;
+}
+.issue_info_table tbody tr:nth-child(2n) {
+   background-color:#FFFFFF;
+}
+.issue_info_table th {
+	text-align:right;
+	font-weight:normal;
+	padding-right:10px;
+	font-size:13px;
+	font-family:Arial;
+	vertical-align:top;
+	min-width:110px;
+}
+.issue_info_table td {
+	font-weight:bold;
+	padding:0 5px 0 0;
+	font-size:13px;
+}
+a.prov_link {
+	color:#00224c;
+	font-weight:normal !important;
+	font-style:italic;
+	font-size:13px;
+	text-decoration:underline;
+	font-family:Arial;
+	padding-left:5px;
+}
+a.prov_link hover {
+	color:#00224c;
+	font-weight:normal !important;
+	font-style:italic;
+	text-decoration:underline;
+}
+.reproduction_table {
+	border:none;
+	margin-bottom:0;
+	padding-left:5px;
+	display:none;
+}
+.reproduction_table tr:nth-child(2n) {
+	background:none;
+}
+.reproduction_table th{
+	text-align:right;
+	font-weight:normal;
+	padding-right:10px;
+	font-size:13px;
+	font-family:Arial;
+	vertical-align:top;
+}
+.reproduction_table td{
+	font-weight:bold;
+	padding:0 5px 0 0;
+	font-size:13px;
+}
+.provenance_table {
+	border:0;
+	margin-bottom:10px;
+}
+.provenance_table th {
+	text-align:right;
+	font-weight:normal;
+	padding-right:10px;
+	margin-bottom:5px;
+	font-size:13px;
+	font-family:Arial;
+	vertical-align:top;
+	min-width:110px;
+}
+.provenance_table td {
+	font-weight:bold;
+	padding:0 5px 0 0;
+	font-size:13px;
+}
+/* #vis_tabs { test
+width:100%;
+}
+*/
+#organizations_header, #formats_header, #collections_header {
+  /* 2015-10-19 was also: visualizations_header */
+	color:#00224C;
+  font-weight:bold;
+  margin-bottom:10px;
+  /*display:none;*/
+}
+#organizations_list {
+	max-height:500px;
+	overflow:auto;
+}
+#format_display {
+	background-color:#ffffff; color:#00224c;
+	font-family:Arial;  line-height:1.4em;
+	min-height:194px;
+}
 
+.format {
+	color:#000000;
+  display:inline-block;
+  font-size:10px;
+  font-weight:bold;
+  padding:0 3px;
+}
+.fac {
+	background-color:#BFBFD0;
+}
+.mfl {
+	background-color:#FFFFFF;
+	border:1px dotted #000000;
+}
+.mfc {
+	background-color:#F0F0F0;
+	border:1px dotted #000000;
+}
+.mop {
+	background-color:#BBBBBB;
+}
+.org {
+	background-color:#000000;
+	color:#FFFFFF;
+}
+.pap {
+	background-color:#000000;
+	color:#FFFFFF;
+}
+.pdf {
+	background-color:#E59486;
+}
+.pho {
+	background-color:#FFFF74;
+}
+.rep {
+	background-color:#BFCCA8;
+}
+.ttl {
+	background-color:#DEB887;
+}
+.unk {
+	background-color:#FFFFFF;
+	color:#FF0000;
+	border:1px dotted #FF0000;
+}
+#org_display {
+	background-color:#ffffff; color:#00224c;
+	font-family:Arial;  line-height:1.4em;
+	min-height:194px;
+}
 #selection_control_wrapper {
-	background-color: #dfe2e6;
-	margin-left: 0;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-bottom: 10px;
-	padding-left: 0px;
-	height: 425px;
+	/*background-color:#E8E6D3;*/
+	background:transparent;
+	margin-left:0;
+	padding-top:20px;
+	padding-right:0px;
+	padding-bottom:10px;
+	padding-left:0px;
+	/*height:425px;*/
+	min-height:160px;
 }
-#inner_selection_control_wrapper { display: none; width: 100%; height:100%; background-color: #dfe2e6; }
+#inner_selection_control_wrapper {
+	display:none;
+	width:100%;
+	height:100%;
+	/*background-color:#E8E6D3; */
+	background:transparent;
+}
+#title_location_container {
+	background:transparent;
+	color:#00224C;
+	padding:15px 60px 15px 60px;
+	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+#title_container {
+	margin-bottom:3px;
+}
+#location_container {
+	font-size:16px;
+}
+#title_location div {
+	padding-bottom:0;
+}
+#title_span {
+	font-weight:bold;
+	font-size:18px;
+}
+#more_link {
+	color:#6F6F6F;
+	font-style:italic;
+	font-size:12px;
+}
+#more_span {
+	visibility:hidden;
+}
+#breadcrumb_container {
+	display:none;
+	margin-bottom:20px;
+}
+.breadcrumb {
+	font-style:italic;
+	padding-top:10px;
+	padding-bottom:15px;
+	text-decoration:underline;
+	color:#00224c;
+}
+.breadcrumb a:link, a:visited, a:hover, a:active  {
+	color:#00224c;
+	text-decoration:underline;
+}
+a.page_link { padding-left:10px; font-style:italic; }
+a.previous_link { font-style:italic; }
+a.next_link { padding-left:10px; font-style:italic; }
+a.active_page { font-weight:bold; }
+#page_navigation { visibility:hidden; margin-top:15px; }
 
-.breadcrumb { font-style: italic; }
-.breadcrumb a:link, a:visited, a:hover, a:active  { color: #00224c; }
-a.page_link { padding-left: 10px; font-style: italic; }
-a.previous_link { font-style: italic; }
-a.next_link { padding-left: 10px; font-style: italic; }
-a.active_page { font-weight: bold; }
-#page_navigation { visibility: hidden; }
-
-#format_table td{ padding: 0px 30px 0px 0px; vertical-align: top; color: #00224c; }
+#format_table {margin-top:15px;}
+#format_table tr{ background:none;}
+#format_table td{ padding:10px 10px 10px 10px; vertical-align:top; color:#00224c; }
 #format_table td a:link,
 #format_table td a:hover,
 #format_table td a:visited,
 #format_table td a:active {
-	font-weight: bold;
+	font-weight:bold;
+	color:#00224C;
+	text-decoration:underline;
 }
-#format_pager { padding-top: 10px; font-style: italic; }
+#format_pager { padding-top:10px; font-style:italic; }
+#format_info_container a:link,
+#format_info_container a:hover,
+#format_info_container a:visited,
+#format_info_container a:active {
+	font-weight:bold;
+	color:#00224C;
+	text-decoration:underline;
+}
 
-#repository_table td{ padding: 0px 30px 0px 0px; vertical-align: top; color: #00224c; }
-#repository_table a { font-weight: bold; }
+#repository_table { margin-top:18px; }
+#repository_table td{ padding:0px 20px 0px 20px; vertical-align:top; color:#00224c; }
+#repository_table a { font-weight:bold; }
 
-#repository_pager { padding-top: 10px; font-style: italic;  }
+#repository_pager { padding-top:10px; font-style:italic;  }
 
-.currentPage { padding: 0 5px; }
-.totalPages { padding: 0 5px; }
-.nextPage { padding-left: 5px; }
-.prevPage { padding-right: 5px; }
+.currentPage { padding:0 5px; }
+.totalPages { padding:0 5px; }
+.nextPage { padding-left:5px; }
+.prevPage { padding-right:5px; }
 
-.title_info_label { font-weight: normal; }
-.issue_info_label { font-weight: normal; }
-.issue_info_text { font-weight: bold; }
+.title_info_label { font-weight:normal; }
+.issue_info_label { font-weight:normal; text-align:right; }
+.issue_info_text { font-weight:bold; }
 
-.repos_note { font-size: 10px; margin: 10px 0 0 0; font-family: Georgia; }
+.repos_note { font-size:10px; margin:10px 0 0 0; font-family:'Helvetica Neue',Arial,Helvetica,sans-serif; }
 
-.bottom_border { padding-left: 10px; border-bottom: 1px solid #958f5c; }
+.bottom_border { padding-left:10px; border-bottom:1px solid #958f5c; }
 
 #footer {
 	/* # AJE 2012-11-20 causes warnings in FF 16; https://developer.mozilla.org/en-US/docs/CSS/background-clip?redirectlocale=en-US&redirectslug=CSS%2F-moz-background-clip
 	-moz-background-clip:border; -moz-background-origin:padding; 	*/
 
-	/* AJE 2012-11-20 I honestly can't see the difference without these
+	/* AJE 2012-11-20 I honestly can't see the difference without these	*/
 	background-clip:border-box;
 	background-origin:padding-box;
 	-moz-background-inline-policy:continuous;
-	*/
 
-	background:#2B2A45 url(../images/footer.gif) repeat-x scroll left top;
-	color:#D1CFBD;
-	font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+	background:#2b2a45 url(../images/footer.gif) repeat-x scroll left top;
+	color:#d1cfbd;
+	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
 	position:relative;
 	bottom:0px;
 }
@@ -189,13 +1226,18 @@ a.active_page { font-weight: bold; }
 	/* z-index:100; AJE 2012-11-20 HID */
 	position:relative;
 	margin:0 auto;
-	width:972px; /*width:780px;*/
+	/* width:972px; CFJ 2013-04-18 commented out width property.  This prevents subfooter top border from extending too far to the right.  */
+	/* width:780px; */
+	width:100%; /* AJE 2014-01-22 this resolved mysterious bar sticking out past right edge of foot area ; was no width property set */
+	z-index:100; /* CFJ 2013-04-18 added z-index property here and removed #footer-container style rule from app.css */
 }
 #footer a { font-weight:bold; color:#c3c2be; text-decoration:none; }
 #footer a:hover { background-color:#ffffff; color:#2d2d4d; text-decoration:none; }
 #footer_title {
 	font-size:1.1em;
-	padding:20px 0 5px;
+	/* CFJ 2013-04-18 Added right padding */
+	padding:20px 15px 5px;
+	/*padding:20px 0 5px;*/
 	text-align:right;
 	width:262px;
 	/* width:200px; */
@@ -204,7 +1246,10 @@ a.active_page { font-weight: bold; }
 #footer_title a:hover { background-color:#fff; color:#2d2d4d; text-decoration:none;}
 #subfooter {  border-top:1px solid #66667b; font-size:0.923em; padding:5px 0 80px; }
 #metanav { float:left; padding-right:20px !important; 	width:262px; width:162px; list-style-type:none; }
-#metanav li { text-align:right; }
+#metanav li {
+	/*text-align:right;*/
+	padding-left:30px;
+}
 #metanav li a { color:#fff; text-decoration:none; }
 #metanav a:hover { color:#2d2d4d; background-color:#ffffff; text-decoration:none; }
 #address { float:left; padding-left:120px; }
@@ -214,7 +1259,7 @@ a.active_page { font-weight: bold; }
 #footer_nav .right { 	float:right; }
 
 
-/* AJE 2012-11-29: this syntax looks wrong
+/* AJE 2012-11-29:this syntax looks wrong
 div#page div {clear:none !important;}
 */
 
@@ -224,122 +1269,181 @@ div#page div {clear:none !important;}
 /*----------------------*/
 div.loading-calendar-invisible{ display:none; }
 div.loading-calendar-visible{
-	padding:30% 0px 20% 0px;
-	text-align: center;
+	padding:13% 0px 13% 0px;
+	text-align:center;
   display:block;
 	color:#556C88;
-	font-family: Arial;
-	font-style: italic;
-	font-size: 1.05em;
-	height: 22%;
+	font-family:Arial;
+	font-style:italic;
+	font-size:1.05em;
+	/*height:22%;*/
 }
 
-/* AJE 2012-11-30: look up this syntax: are some classes not affected because of the space in the selector? */
-div.loading-calendar-visible p{ color: #556C88; }
-div .loading-calendar-visible img { display: inline; }
+
+/* AJE 2012-11-30:look up this syntax:are some classes not affected because of the space in the selector? */
+div.loading-calendar-visible p{ color:#556C88; }
+div .loading-calendar-visible img { display:inline; }
 div.loading-issue-info-invisible{ display:none; }
-div .loading-issue-info-invisible img { display: none; }
+div .loading-issue-info-invisible img { display:none; }
 div.loading-issue-info-visible{
-	padding: 5% 0 5% 0;
-  display: block;
-	font-family: Arial;
-	font-style: italic;
-	font-size: 1.05em;
-	text-align: center;
-	background-color: #ffffff;
-	color: #7b8f56;
+	padding:5% 0 5% 0;
+  display:block;
+	font-family:Arial;
+	font-style:italic;
+	font-size:1.05em;
+	text-align:center;
+	background-color:#ffffff;
+	color:#556C88;
 }
-div .loading-issue-info-visible img { display: inline; }
-
-.link_group_container a:link, a:visited, a:hover, a:active  { color: #00224c; }
-
-.timeline {
-	background-color: #dfe2e6;
+div.loading-format-info-visible p{ color:#556C88; }
+div .loading-format-info-visible img { display:inline; }
+div.loading-format-info-invisible{ display:none; }
+div .loading-format-info-invisible img { display:none; }
+div.loading-format-info-visible{
+	padding:5% 0 5% 0;
+  display:block;
+	font-family:Arial;
+	font-style:italic;
+	font-size:1.05em;
+	text-align:center;
+	background-color:#ffffff;
+	color:#556C88;
+}
+div.loading-organization-info-visible p{ color:#556C88; }
+div .loading-organization-info-visible img { display:inline; }
+div.loading-organization-info-invisible{ display:none; }
+div .loading-organization-info-invisible img { display:none; }
+div.loading-organization-info-visible{
+	padding:5% 0 5% 0;
+  display:block;
+	font-family:Arial;
+	font-style:italic;
+	font-size:1.05em;
+	text-align:center;
+	background-color:#ffffff;
+	color:#556C88;
+}
+.link_group_container a:link, a:visited, a:hover, a:active  {
+	color:#00224c;
+	text-decoration:underline;
+}
+#timeline_heading {
+	text-align:center;
+	color:#00224C;
+	font-weight:bold;
+	font-size:16px;
+	letter-spacing:1.5px;
+	margin-top:25px;
+	display:none;
 	float: left;
+	padding-left:15px;
 }
-.timeline ul { margin-top: 0px; }
+#timeline_label {
+	color:#4E4F7F;
+	text-align:center;
+}
+#timeline_help_container {
+	float: right;
+	height: 24px;
+	margin-right: 15px;
+	/*margin-top: 25px;*/
+	margin-top: 22px;
+	display: none;
+}
+.timeline {
+	/*background-color:#E8E6D3;*/
+	background-color:transparent;
+	margin-top:20px;
+}
+.timeline ul {
+	margin-top:0px;
+}
 .timeline li {
-	float:left;
 	height:4em;
 	list-style-type:none;
-	margin:0px;
+	margin-left:20px;
 	position:relative;
-	width:4em;
+	width:100%;
+	display:none;
 }
 .timeline li li {
-	height:3em;
+	width:3em;
 	position:absolute;
-	top:0;
-	width:10%;
+	top:1em;
+	height:10%;
+	margin-left:15%;
 }
 .timeline li a {
 	display:block;
 	height:100%;
 	width:100%;
-	text-decoration: none;
+	text-decoration:none;
 }
 .timeline .label {
-	bottom:1em;
-	border:1px solid #CCC;
-	border-width:1px 1px 0 0;
+	/*bottom:1em;*/
+	bottom:0;
+	border:1px solid #A8A8A5;
+	border-width:0 0 1px 1px;
 	display:block;
-	height:1em;
-	left:0;
+	/*height:1em;*/
+	/*left:0;*/
+	top:0;
 	position:absolute;
-	text-align:center;
-	width:100%;
+	text-align:left;
+	width:80%;
+	/*background-color:#E8E6D3;*/
+	background-color:transparent;
 }
 .timeline li a .count {
-	height:3em;
-	background-color: #4e4f7f;
-	color: #4e4f7f;
+	width:3em;
+	/*background-color:#4e4f7f;
+	color:#4e4f7f;*/
+	background-color:#BFCCA8;
+	color:#DA5856;
+	bottom:0px;
 	display:block;
 	overflow:hidden;
 	position:absolute;
-	width:100%;
+	height:100%;
 }
-.timeline li a .count {
-	height:3em;
-	background-color: #4e4f7f;
-	color: #4e4f7f;
-	bottom: 0px;
-	display:block;
-	overflow:hidden;
-	position:absolute;
-	width:100%;
-}
-.timeline .label a { color: #4e4f7f; }
-.timeline .y0 { left:0%;  font-size: 8px; }
-.timeline .y1 { left:10%; font-size: 8px; }
-.timeline .y2 { left:20%; font-size: 8px; }
-.timeline .y3 { left:30%; font-size: 8px; }
-.timeline .y4 { left:40%; font-size: 8px; }
-.timeline .y5 { left:50%; font-size: 8px; }
-.timeline .y6 { left:60%; font-size: 8px; }
-.timeline .y7 { left:70%; font-size: 8px; }
-.timeline .y8 { left:80%; font-size: 8px; }
-.timeline .y9 { left:90%; font-size: 8px; }
-#li_1690s { display: none; }
+.timeline .label a { color:#00442C; }
+.timeline .y0 { top:0%;  font-size:8px; }
+.timeline .y1 { top:10%; font-size:8px; }
+.timeline .y2 { top:20%; font-size:8px; }
+.timeline .y3 { top:30%; font-size:8px; }
+.timeline .y4 { top:40%; font-size:8px; }
+.timeline .y5 { top:50%; font-size:8px; }
+.timeline .y6 { top:60%; font-size:8px; }
+.timeline .y7 { top:70%; font-size:8px; }
+.timeline .y8 { top:80%; font-size:8px; }
+.timeline .y9 { top:90%; font-size:8px; }
+#li_1690s { display:none; }
 
 .calendar_label {
-	padding-bottom: 0px;
-	text-align: center;
-	color: #00224c;
-	font-family: Arial;
-	font-weight: bold;
-	font-size: 1em;
-	margin: 0px;
-	line-height: 40px;
+	padding-bottom:0px;
+	color:#00224c;
+	font-family:Arial;
+	font-weight:bold;
+	font-size:1em;
+	margin:0px;
+	line-height:40px;
 }
-#select_year_label { padding-left: 15px; margin: 20px 0px 0px 0px; }
+#select_year_label {
+	padding-left:15px;
+	margin:10px 0px 0px 0px;
+}
+#year_option_container {
+	padding:0;
+}
 #year_option {
-	float: left;
-	margin-top: 12px;
-	width: 60px !important;
-	background-color: #4e4f7f;
-	color: #dfe2e6;
-	font-family: Arial;
-	font-size: 1.1em;
+	float:left;
+	margin:0;
+	width:75px !important;
+	background-color:#00224C;
+	color:#E8E6D3;
+	font-family:Arial;
+	font-size:1.1em;
+	text-align:center;
 }
 
 
@@ -349,81 +1453,83 @@ div .loading-issue-info-visible img { display: inline; }
 
 
 /*----------------------*/
-/* Month box style rules (calendar_selection_controls); see also browser-speciic stylesheets */
+/* Month box style rules (calendar_selection_controls); see also browser-specific stylesheets */
 /*----------------------*/
-#month_year_container { float: left; }
-#month_control_wrapper { clear: both; }
+#month_year_container { float:left; }
+#month_control_wrapper { clear:both; }
 .month_box {
-	float: left;
-	height: 30px; /*was 19 */
-	width: 55px;
-	color: #989aa9;
-	text-align: center;
-	font-family: Arial;
-	font-size: .8em;
+	float:left;
+	height:30px; /*was 19 */
+	width:45px;
+	color:#989aa9;
+	text-align:center;
+	font-family:Arial;
+	font-size:.8em;
+	cursor:pointer;
 }
 .month_box_not_available {
-	background-color: #dfe2e6;
-	color: #989aa9;
-	font-weight: bold;
+	background-color:#FFFFFF;
+	color:#00224C;
+	font-weight:normal;
+	line-height:30px;
 }
 .month_box_available {
-	background-color: #adbd90;
-	font-size: 1.1em;
-	color: #00224c;
-	font-weight: normal;
-	padding: 6px 0 4px 0;
+	background-color:#BFCCA8;
+	font-size:14px;
+	color:#00224C;
+	font-weight:normal;
+	padding:6px 0 4px 0;
 }
 .month_box_selected {
-	background-color: #4e4f7f;
-	color: #dfe2e6;
-	font-size: 1.1em;
-	vertical-align: middle;
-	font-weight: bold;
-	padding: 6px 0 4px 0;
+	background-color:#00224C;
+	color:#E8E6D3;
+	font-size:1.1em;
+	vertical-align:middle;
+	font-weight:bold;
+	padding:6px 0 4px 0;
 }
 #jan {
-	border-top: 1px solid #989aa9;
-	border-right: 1px solid #989aa9;
-	border-left: 1px solid #989aa9;
+	border-top:1px solid #303030;
+	border-right:1px solid #303030;
+	border-left:1px solid #303030;
 }
 #feb, #mar, #apr {
-	border-top: 1px solid #989aa9;
-	border-right: 1px solid #989aa9;
+	border-top:1px solid #303030;
+	border-right:1px solid #303030;
 }
 #may {
-	clear: both;
-	border-top: 1px solid #989aa9;
-	border-right: 1px solid #989aa9;
-	border-left: 1px solid #989aa9;
+	clear:both;
+	border-top:1px solid #303030;
+	border-right:1px solid #303030;
+	border-left:1px solid #303030;
 }
 #jun, #jul, #aug {
-	border-top: 1px solid #989aa9;
-	border-right: 1px solid #989aa9;
+	border-top:1px solid #303030;
+	border-right:1px solid #303030;
 }
 #sep {
-	clear: both;
-	border-top: 1px solid #989aa9;
-	border-right: 1px solid #989aa9;
-	border-bottom: 1px solid #989aa9;
-	border-left: 1px solid #989aa9;
+	clear:both;
+	border-top:1px solid #303030;
+	border-right:1px solid #303030;
+	border-bottom:1px solid #303030;
+	border-left:1px solid #303030;
 }
 #oct, #nov, #dec {
-	border-top: 1px solid #989aa9;
-	border-right: 1px solid #989aa9;
-	border-bottom: 1px solid #989aa9;
+	border-top:1px solid #303030;
+	border-right:1px solid #303030;
+	border-bottom:1px solid #303030;
 }
 /*----------------------*/
 /* END Month box style rules */
 /*----------------------*/
 
 #newspaper_result {
-	float: left;
-	color: #7a7a94;
-	width: 100%;
-	padding: 0;
+	float:left;
+	color:#7a7a94;
+	width:100%;
+	padding:0;
 }
-#newspaper_info { margin: 0; }
+#newspaper_info { margin:0; }
 
 
 
@@ -431,54 +1537,142 @@ div .loading-issue-info-visible img { display: inline; }
 /* jQuery UI Datepicker plugin style rules; see also browser-speciic stylesheets */
 /*----------------------------------------*/
 #datepicker_container {
-	float: left;
-	/* margin-left: 15px; /* AJE 2013-02-26 09:43:47 was 15px */
-	padding-bottom: 13px;
-	width: 53%;
-	font-size: 1em;
-	color: #00224c;
+	float:left;
+	/* margin-left:15px; /* AJE 2013-02-26 09:43:47 was 15px */
+	padding-bottom:13px;
+	font-size:1em;
+	color:#00224c;
 }
 .ui-datepicker-title {
 	/*Contains built-in month and year selection controls*/
-	background-color: #4e4f7f;
-	color: #dfe2e6;
-	font-weight: bold;
-	font-family: Arial;
-	font-size: 1.1em;
-	text-align: center;
-	text-transform: uppercase;
-	margin-left: 52px;
-	padding: 1px 25px 4px 21px;
-	height: 18px;
+	background-color:#00224C;
+	color:#E8E6D3;
+	font-weight:bold;
+	font-family:Arial;
+	font-size:1.1em;
+	text-align:center;
+	text-transform:uppercase;
+	padding:5px 0;
 
-	width: 275px; /* AJE 2013-02-26 09:36:45 */
+	/*width:275px; (1) AJE 2013-02-26 09:36:45 (2) CFJ 2013-05-06 13:41:02 - commented out, explicit width no longer needed with Foundation */
 
-	border-top: 1px solid #000000;
-	border-left: 1px solid #000000;
-	border-right: 1px solid #000000;
+	border-top:1px solid #000000;
+	border-left:1px solid #000000;
+	border-right:1px solid #000000;
 }
-.ui-datepicker-calendar { float: left; background-color: #ffffff; }
-.ui-datepicker-month { margin: 0; padding: 0; }
-.ui-datepicker-year { margin: 0; padding: 0; }
-.ui-icon { /*Hides built-in 'previous' and 'next' icons*/
-	float: left; visibility: hidden;
+.ui-datepicker-calendar { float:left; background-color:#ffffff; }
+.ui-datepicker-month { margin:0; padding:0; }
+.ui-datepicker-year { margin:0; padding:0; }
+
+
+.ui-datepicker-next, .ui-datepicker-prev {
+	position:relative;
 }
-.ui-datepicker-inline { clear: both; color: #00224c; }
 
-.ui-datepicker table{ border-collapse: collapse; font-family: Arial; width: 85%; margin-left: 52px; }
-.ui-datepicker th{ border: 1px solid #000000; background-color: #4e4f7f; color: #dfe2e6; width: 20px; text-align: center; }
-.ui-datepicker  td{ border: 1px solid #000000; text-align: center; color: #2d2d4d; }
-td .ui_datepicker_unselectable span.ui-state-default { color: #00224c; }
 
-.publication_date { background-color: #adbd90; color: #00224c; }
-.publication_date a { background-color: #adbd90; color: #00224c; }
-.publication_date a:hover { background-color: #adbd90; color: #00224c; }
+.ui-icon.ui-icon-circle-triangle-e {
+	/*Built-in 'next month' control*/
+    background:url("../images/nextArrow.gif") no-repeat scroll 0 0 transparent;
+    color:#E97100;
+    font-weight:bold;
+    font-size:24px;
+    cursor:pointer;
+    display:inline-block;
+    height:22px;
+    left:200px;
+    line-height:100%;
+    overflow:hidden;
+    position:absolute;
+    text-align:center;
+    top:17px;
+    width:10px;
+}
+.ui-icon.ui-icon-circle-triangle-w {
+	  /*Built-in 'previous month' control*/
+    background:url("../images/prevArrow.png") no-repeat scroll 0 0 transparent;
+    color:#E97100;
+    font-weight:bold;
+    font-size:24px;
+    cursor:pointer;
+    display:inline-block;
+    height:22px;
+    left:5px;
+    line-height:100%;
+    overflow:hidden;
+    position:absolute;
+    text-align:center;
+    top:17px;
+    width:10px;
+}
 
-.selected_publication_date { background-color: #4e4f7f; color: #dfe2e6; }
-.selected_publication_date a{ background-color: #4e4f7f; color: #dfe2e6; font-weight: bold; }
-.selected_publication_date a:hover { background-color: #4e4f7f; color: #dfe2e6; }
 
-.not_publication_date span{ color: #00224c; }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	/* Chrome and Safari-specific styles */
+ .ui-icon.ui-icon-circle-triangle-w {top:5px;}
+ .ui-icon.ui-icon-circle-triangle-e {top:5px;}
+ #bib_id_container ul {list-style-type:none; margin-top:10px;}
+}
+
+@media screen and (-ms-high-contrast:active), (-ms-high-contrast:none) {
+  /* IE10-specific styles */
+ .ui-icon.ui-icon-circle-triangle-w {top:5px;}
+ .ui-icon.ui-icon-circle-triangle-e {top:5px;}
+}
+
+.ui-widget-content {
+	border:1px solid #aaaaaa;
+	/*background:#ffffff url(images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;*/
+	/*background:#ffffff url(../images/ui-icons_222222_256x240.png) 50% 50% repeat-x;*/
+	color:#222222;
+}
+.ui-datepicker-inline { clear:both; color:#00224c; }
+
+.ui-datepicker table{
+	border-collapse:collapse;
+	font-family:Arial;
+	width:85%;
+}
+.ui-datepicker th {
+	border:1px solid #000000;
+	background-color:#FFFFFF;
+	color:#00224C;
+	width:20px;
+	text-align:center;
+	padding:4px 6px;
+	font-weight:normal;
+}
+.ui-datepicker td {
+	border:1px solid #000000;
+	text-align:center;
+	color:#2d2d4d;
+	padding:2px;
+}
+.ui-datepicker-week-end {
+	border:1px solid #000000 !important;
+}
+td .ui-datepicker-unselectable span.ui-state-default { color:#00224c; }
+
+.ui-datepicker-unselectable.ui-state-disabled {
+	background-color:#FFFFFF;
+}
+
+.publication_date { background-color:#BFCCA8; color:#00224C; }
+.publication_date a { background-color:#BFCCA8; color:#00224C; }
+.publication_date a:hover { background-color:#BFCCA8; color:#00224C; }
+
+.selected_publication_date { background-color:#00224C; color:#E8E6D3; }
+.selected_publication_date a{ background-color:#00224C; color:#E8E6D3; font-weight:bold; }
+.selected_publication_date a:hover { background-color:#00224C; color:#E8E6D3; }
+
+.not_publication_date td {
+	/*background-color:purple;*/
+}
+.not_publication_date span{
+	color:#00224c;
+	font-size:12px;
+}
+
+
 /*----------------------------------------*/
 /* END jQuery UI Datepicker plugin style rules*/
 /*----------------------------------------*/
@@ -488,37 +1682,84 @@ td .ui_datepicker_unselectable span.ui-state-default { color: #00224c; }
 /*----------------------------------------*/
 /* Style rules for other jQuery UI widgets; see also browser-speciic sheets */
 /*----------------------------------------*/
-.ui-autocomplete { position: absolute; cursor: default; }
+.ui-autocomplete { position:absolute; cursor:default; }
 .ui-menu {
 	list-style:none;
-	padding: 1px;
-	margin: 0;
+	padding:1px;
+	margin:0;
 	display:block;
-	float: left;
-	background-color: #FFF;
-	border: 1px solid #D6CCC0;
+	float:left;
+	background-color:#FFF;
+	border:1px solid #D6CCC0;
 }
-.ui-menu .ui-menu { margin-top: -3px; }
+.ui-menu .ui-menu { margin-top:-3px; }
 .ui-menu .ui-menu-item {
 	margin:0;
-	padding: 0;
-/* zoom: 1; # AJE 2012-11-20 generates warning in FF 16 */
-	float: left;
-	clear: left;
-	width: 100%;
-	font-size: .8em;
-	color: #37375E;
+	padding:0;
+/* zoom:1; # AJE 2012-11-20 generates warning in FF 16 */
+	float:left;
+	clear:left;
+	width:100%;
+	font-size:.8em;
+	color:#37375E;
 }
 .ui-menu .ui-menu-item a {
 	text-decoration:none;
 	display:block;
 	padding:.2em .4em;
 	line-height:1.5;
-	/* zoom: 1; # AJE 2012-11-20 generates warning in FF 16 */
+	/* zoom:1; # AJE 2012-11-20 generates warning in FF 16 */
 }
 
 .ui-menu .ui-menu-item a.ui-state-hover,
-.ui-menu .ui-menu-item a.ui-state-active { font-weight: normal; margin: -1px; }
+.ui-menu .ui-menu-item a.ui-state-active { font-weight:normal; margin:-1px; }
 /*----------------------------------------*/
 /* END Style rules for other jQuery UI widgets */
+/*----------------------------------------*/
+
+/*----------------------------------------*/
+/* D3 tree visualization style rules
+/*----------------------------------------*/
+
+
+.node {
+  cursor:pointer;
+}
+.node circle {
+  fill:#fff;
+  stroke:#675F7F;
+  stroke-width:1.5px;
+}
+#genealogy_container {
+	background-color:#FFFFFF;
+}
+#genealogy_new_window_link_container {
+	text-align:right;
+	padding:10px 30px 0 0;
+}
+#genealogy_new_window_link_container a {
+	color:#6F6F6F;
+  font-size:12px;
+  font-style:italic;
+}
+.genealogy_link {
+	fill:none;
+	stroke:#AAAAAA;
+	stroke-width:1px;
+}
+.node text {
+  font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+  fill:#00224C;
+  font-size:11px;
+  cursor:default;
+}
+.relationship_label {
+	fill:#00224C;
+  font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size:11px;
+  font-style:italic;
+}
+
+/*----------------------------------------*/
+/* END Style rules for D3 visualization
 /*----------------------------------------*/

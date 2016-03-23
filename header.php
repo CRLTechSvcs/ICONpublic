@@ -1,7 +1,7 @@
 <!--header.php: logo and site title -->
 <div id="header">
-	<a href="http://www.crl.edu"><img height="61" width="389" border="2" alt="Center for Research Libraries - Global Resources Network" src="images/logo.gif"/></a>
-	<div id="scopeTitleSmaller">
+	<a href="http://www.crl.edu"><img height="61" width="389" border="2" alt="Center for Research Libraries - Global Resources Network" style="margin-top: 0px;" src="images/CRL_logo.png"/></a>
+	<div id="scopeTitleSmaller" style="margin-top: 0px;">
 		<h1 class="generalTitle">International Coalition on Newspapers</h1>
 		<h2 class="specificTitle">ICON</h2>
 	</div>
