@@ -108,11 +108,17 @@
 												<div class="month_box" id="nov">NOV</div>
 												<div class="month_box" id="dec">DEC</div>
 											</div>
-										</div>
+
+										</div><!--#month_year_container-->
 									</div>
 									<div class="five columns end">
 										<div type="text" id="datepicker_container">
 										</div>
+
+                    <div id="datepicker_help_container" style="display: block;">
+                    <a href="#" id="datepicker_help_button" class="button" data-reveal-id="datepicker_color_key"><img src="images/sage_question_mark.png" /></a>
+                    </div>
+
 									</div>
 								</div>
 							</div>
@@ -230,10 +236,6 @@
 		</div><!--end class="row contentArea"-->
 
 
-<?php
-  //include('visualize_tabs.php'); // AJE new 2015-08-03 17:09:48
-?>
-
 <!-- FOOTER -->
 <?php
   include("footerCRL.html");
@@ -242,6 +244,7 @@
   include("help_selection_orgs_chart.php");
   include("help_selection_formats_chart.php");
   include("help_selection_collections_chart.php");
+  include("help_selection_datepicker_color_key.php");
 
   include("footer_script_tags.php");
 

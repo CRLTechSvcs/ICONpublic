@@ -262,7 +262,7 @@ $orgInfo = array("org_id"=>"AQK","org_name"=>"Pennsylvania Newspaper Project, De
 array_push($orgsArray, $orgInfo);
 $orgInfo = array("org_id"=>"AQL","org_name"=>"Pennsylvania Newspaper Project, Snyder County","org_address"=>"Walnut St and Commonwealth Ave PO Box 1601","org_city"=>"Harrisburg","country_id"=>"pau","org_postalCode"=>"17105","org_home_uri"=>"","publications"=>30,"issues"=>4458,"issue_dates"=>"1820-10-19 to 1947-01-09");
 array_push($orgsArray, $orgInfo);
-$orgInfo = array("org_id"=>"AQM","org_name"=>"American Antiquarian Society","org_address"=>"185 Salisbury St","org_city"=>"Worcester","country_id"=>"mau","org_postalCode"=>"01609","org_home_uri"=>"","publications"=>18079,"issues"=>1880492,"issue_dates"=>"1690-09-25 to 1999-10-03");
+$orgInfo = array("org_id"=>"AQM","org_name"=>"American Antiquarian Society","org_address"=>"185 Salisbury St","org_city"=>"Worcester","country_id"=>"mau","org_postalCode"=>"01609","org_home_uri"=>"http://catalog.mwa.org/","publications"=>18079,"issues"=>1880492,"issue_dates"=>"1690-09-25 to 1999-10-03");
 array_push($orgsArray, $orgInfo);
 $orgInfo = array("org_id"=>"AQN","org_name"=>"Pennsylvania Newspaper Project, Juniata County","org_address"=>"Walnut St and Commonwealth Ave PO Box 1601","org_city"=>"Harrisburg","country_id"=>"pau","org_postalCode"=>"17105","org_home_uri"=>"","publications"=>19,"issues"=>5451,"issue_dates"=>"1816-06-04 to 1976-04-28");
 array_push($orgsArray, $orgInfo);
@@ -2770,7 +2770,7 @@ $orgInfo = array("org_id"=>"MI0","org_name"=>"Moyer District Library","org_addre
 array_push($orgsArray, $orgInfo);
 $orgInfo = array("org_id"=>"MIA","org_name"=>"Miami University Libraries","org_address"=>"Periodical Rec 500 E High St","org_city"=>"Oxford","country_id"=>"ohu","org_postalCode"=>"45056-1602","org_home_uri"=>"http:\/\/www.lib.muohio.edu\/","publications"=>260,"issues"=>22604,"issue_dates"=>"1793-11-09 to 1970-07-20");
 array_push($orgsArray, $orgInfo);
-$orgInfo = array("org_id"=>"MITGS","org_name"=>"Gale Cengage Learning","org_address"=>"321 Research Pkwy Suite 301","org_city"=>"Meriden","country_id"=>"ctu","org_postalCode"=>"06450-8342","org_home_uri"=>null,"publications"=>2727,"issues"=>1582168,"issue_dates"=>"1604-01-14 to 2012-12-31");
+$orgInfo = array("org_id"=>"MITGS","org_name"=>"Gale Cengage Learning","org_address"=>"321 Research Pkwy Suite 301","org_city"=>"Meriden","country_id"=>"ctu","org_postalCode"=>"06450-8342","org_home_uri"=>null,"publications"=>2724,"issues"=>1582168,"issue_dates"=>"1604-01-14 to 2012-12-31");
 array_push($orgsArray, $orgInfo);
 $orgInfo = array("org_id"=>"MIU","org_name"=>"Maharishi University of Management Library","org_address"=>"Library","org_city"=>"Fairfield","country_id"=>"iau","org_postalCode"=>"52557","org_home_uri"=>"http:\/\/www.mum.edu\/library\/","publications"=>5,"issues"=>5,"issue_dates"=>null);
 array_push($orgsArray, $orgInfo);
@@ -3770,7 +3770,7 @@ $orgInfo = array("org_id"=>"PQA","org_name"=>"Seton Hill University","org_addres
 array_push($orgsArray, $orgInfo);
 $orgInfo = array("org_id"=>"PQD","org_name"=>"Jenkins Law Library","org_address"=>"833 Chestnut St Ste 1220","org_city"=>"Philadelphia","country_id"=>"pau","org_postalCode"=>"19107-4429","org_home_uri"=>"http:\/\/www.jenkinslaw.org","publications"=>1,"issues"=>1,"issue_dates"=>null);
 array_push($orgsArray, $orgInfo);
-$orgInfo = array("org_id"=>"PQHN","org_name"=>"ProQuest Historical Newspapers","org_address"=>"789 E. Eisenhower Parkway","org_city"=>"Ann Arbor","country_id"=>"miu","org_postalCode"=>"48106","org_home_uri"=>"http:\/\/www.proquest.com","publications"=>3,"issues"=>46209,"issue_dates"=>"1838-11-03 to 2005-12-31");
+$orgInfo = array("org_id"=>"PQHN","org_name"=>"ProQuest Historical Newspapers","org_address"=>"789 E. Eisenhower Parkway","org_city"=>"Ann Arbor","country_id"=>"miu","org_postalCode"=>"48106","org_home_uri"=>"http:\/\/www.proquest.com","publications"=>44,"issues"=>120818,"issue_dates"=>"1838-11-03 to 2005-12-31");
 array_push($orgsArray, $orgInfo);
 $orgInfo = array("org_id"=>"PR3","org_name"=>"Historical Society of Montgomery County","org_address"=>"1654 Dekalb St","org_city"=>"Norristown","country_id"=>"pau","org_postalCode"=>"19401","org_home_uri"=>"","publications"=>158,"issues"=>21531,"issue_dates"=>"1774-03-23 to 1975-05-27");
 array_push($orgsArray, $orgInfo);

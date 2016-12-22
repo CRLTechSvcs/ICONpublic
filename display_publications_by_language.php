@@ -212,7 +212,7 @@
 
       if ( ! b_show_USA_map &&  regex_match ) {
         b_show_USA_map = true;
-        num_us_pubs = count_provinces( language_countries, /..u/ ); // statistics_countries.js
+        num_us_pubs = count_provinces( language_countries, /..u/ ); // statistics.js
         //console.log('found b_show_USA_map = ', b_show_USA_map, ' ; num_us_pubs = ', num_us_pubs);
       }
       regex_match = /..c/.test( language_countries[i].country_id );

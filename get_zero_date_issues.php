@@ -1,4 +1,14 @@
 <?php
+/*
+
+  2016-05-11 AJE
+  new table: zerodate_issues
+  use that instead of main issues table
+
+  original sometime in 2014?
+*/
+
+
 	$selectedPubId = $_REQUEST['selectedPubId'];
 	$innerArray = array();
 	$issueArray = array();
@@ -7,12 +17,21 @@
 	$matchArray = array();
 	include ("config.php");
 
+  /*
   $sqlZeroDateIssues  = 'SELECT i.*, c.condition_name, f.format_name, a.archive_status_name, o.org_id, o.org_name ';
 	$sqlZeroDateIssues .= 'FROM issues i, conditions c, formats f, archive_status a, organizations o ';
 	$sqlZeroDateIssues .= 'WHERE i.condition_id = c.condition_id AND i.format_id = f.format_id AND i.archive_status_id = a.archive_status_id ';
-	$sqlZeroDateIssues .= 'AND i.org_id = o.org_id AND issue_date = "0000-00-00" ';
+	$sqlZeroDateIssues .= 'AND i.org_id = o.org_id ';
+	//$sqlZeroDateIssues .= 'AND issue_date = "0000-00-00" '; // AJE 2016-05-11 zerodate_issues moved to new table
 	$sqlZeroDateIssues .= 'AND i.specificIssuesCreated = "0" ';
 	$sqlZeroDateIssues .= 'AND pub_id = "' . $selectedPubId . '" ORDER BY org_name';
+  */
+    $sqlZeroDateIssues  = 'SELECT i.*, c.condition_name, f.format_name, a.archive_status_name, o.org_id, o.org_name ';
+	$sqlZeroDateIssues .= 'FROM zerodate_issues i, conditions c, formats f, archive_status a, organizations o ';
+	$sqlZeroDateIssues .= 'WHERE i.condition_id = c.condition_id AND i.format_id = f.format_id AND i.archive_status_id = a.archive_status_id ';
+	$sqlZeroDateIssues .= 'AND i.org_id = o.org_id ';
+	$sqlZeroDateIssues .= 'AND pub_id = "' . $selectedPubId . '" ORDER BY org_name';
+
 
 	$queryResult = @mysqli_query($conn, $sqlZeroDateIssues) or die( mysqli_error($conn) );
 	$numrows = mysqli_num_rows($queryResult);
@@ -20,7 +39,7 @@
 		echo mysql_error();
 	} else {
 		while($row = mysqli_fetch_array($queryResult, MYSQL_ASSOC)) {
-			$issue_id = $row['issue_id'];
+			$issue_id = $row['zerodate_issue_id'];
 			$issue_date = $row['issue_date'];
 			$rawIssueData = $row['rawIssueData'];
 			$org_id = $row['org_id'];

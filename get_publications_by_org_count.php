@@ -11,7 +11,10 @@
     how many publications does org_id have issues for?
   */
 
-	$org_pub_count_SQL = 'SELECT COUNT(DISTINCT pub_id) AS org_pub_count FROM C3publications_per_org WHERE org_id = "' . $org_id . '"';
+  // AJE 2016-04-28 reverted to issues table : too much trouble keeping C3publications_per_org up to date
+	//$org_pub_count_SQL = 'SELECT COUNT(DISTINCT pub_id) AS org_pub_count FROM C3publications_per_org WHERE org_id = "' . $org_id . '"';
+	$org_pub_count_SQL = 'SELECT COUNT(DISTINCT pub_id) AS org_pub_count FROM issues WHERE org_id = "' . $org_id . '"';
+
   //echo '<br/>org_pub_count_SQL = ' . $org_pub_count_SQL . ';';
 
 	$org_pub_count_result = @mysqli_query($conn, $org_pub_count_SQL) or die( mysqli_error($conn) );

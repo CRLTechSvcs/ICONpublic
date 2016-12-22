@@ -44,7 +44,7 @@ file_body
     // in icondata, it is text: need quotes here
   $sql_holders .= 'WHERE pub_id = "' . $pub_id . '" ';
   //$sql_holders .= 'WHERE pub_id = "sn84023370" ';
-  $sql_holders .= "AND issue_date <> '0000-00-00' ";
+  //$sql_holders .= "AND issue_date <> '0000-00-00' "; // AJE 2016-05-11 zerodate_issues moved to new table
   $sql_holders .= 'GROUP BY org_id ';
   $sql_holders .= 'ORDER BY org_issue_count DESC, org_id ASC';
   //echo '<br/>' . $sql_holders . '<br/>';
@@ -71,7 +71,7 @@ $file_body .= $header_line;    //echo "file_body = " . $file_body . "<hr/>";
   $issue_dates = array();
   $sql_issue_dates = 'SELECT DISTINCT CAST(LEFT(issue_date,4) AS CHAR) AS issue_date FROM issues ';
   $sql_issue_dates .= 'WHERE pub_id = "' . $pub_id . '" ';
-  $sql_issue_dates .= "AND issue_date <>  '0000-00-00' ";
+  // $sql_issue_dates .= "AND issue_date <>  '0000-00-00' "; // AJE 2016-05-11 zerodate_issues moved to new table
   $sql_issue_dates .= 'ORDER BY issue_date';
   //echo '<br/>' . $sql_issue_dates . '<br/>';
   $issue_dates_result  = @mysqli_query($conn, $sql_issue_dates) or die( mysqli_error($conn) );

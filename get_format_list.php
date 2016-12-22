@@ -24,10 +24,11 @@
   */
 
 	$formatQuery  = 'SELECT f.format_id AS format_id, f.format_name AS format_name, f.format_note AS format_note ';
-	$formatQuery .= 'FROM formats f WHERE f.format_id IN ';
-	$formatQuery .= '(SELECT DISTINCT(issues.format_id) FROM issues ';
-	$formatQuery .= 'WHERE issues.pub_id = "'. $selectedPubId . '" AND issues.issue_date != "0000-00-00" ) ';
-  $formatQuery .= 'ORDER BY f.format_name';
+	$formatQuery .= 'FROM formats f WHERE f.format_id IN ( ';
+	  $formatQuery .= 'SELECT DISTINCT(format_id) FROM issues ';
+	  $formatQuery .= 'WHERE pub_id = "'. $selectedPubId . '" ';
+	  //$formatQuery .= 'AND issue_date != "0000-00-00" '; // AJE 2016-05-11 zerodate_issues moved to new table
+  $formatQuery .= ') ORDER BY f.format_name';
 	$formatResult = @mysqli_query($conn, $formatQuery) or die( mysqli_error($conn) );
 	$numrows = mysqli_num_rows($formatResult);
 	if (!$formatResult) {
@@ -37,25 +38,15 @@
 
 			$format_id = $format_row['format_id'];
 			$format_name = $format_row['format_name'];
-			if ($format_name == 'Digital (pdf)') {
-				$format_name = 'Digital pdf';
-			} else if ($format_name == 'Digital (tiff)') {
-				$format_name = 'Digital tiff';
-			} else if ($format_name == 'Digital (Direct electronic)') {
-				$format_name = 'Digital direct electronic';
-			}else if ($format_name == 'format unspecified/unknown') {
-				$format_name = 'Unspecified or unknown';
-			}
+			// AJE 2015-01-28 -- changed the format_name field in the database so no need for big ifs that were here
 			$format_note = $format_row['format_note'];
-
-      $num_pubs = "num_pubs not applicable in this script 2013-11-11";
 
       //HOW MANY ISSUES FOR THE PUBS IN THIS FORMAT?
       $num_issues = 0;
       $issues_query = 'SELECT COUNT(*) as num_issues FROM issues ';
       $issues_query .= 'WHERE issues.pub_id = "'. $selectedPubId . '" ';
       $issues_query .= 'AND format_id = ' . $format_id . ' ';
-      $issues_query .= 'AND issues.issue_date != "0000-00-00" ';
+      //$issues_query .= 'AND issues.issue_date != "0000-00-00" '; // AJE 2016-05-11 zerodate_issues moved to new table
       //echo $issues_query;
     	$issues_statement = $conn->prepare($issues_query);
       //$issues_statement->bind_param('s', $format_id);
@@ -71,24 +62,20 @@
 			  'formatName' => $format_name,   // version for CJ's function displayFormatList in calendar_selection_functions.js
 			  'format_name' => $format_name,  // for AJE Google Chart API script
 			  'format_note' => $format_note,
-			  'publications' => $num_pubs,
+			  'publications' => "1",
 			  'issues' => $num_issues
 			);
 
-			//array_push($formatInfo, $tempFormat);
-			//sort($formatInfo);
-
-
 			if ($num_issues) { // is > 0, then add this format to the array
+			  array_map("utf8_encode", $formatInfo);  // new 2015-02-03
 			  array_push($formatArray, $formatInfo);
 			}//end if
 
 		} //end while format_row
-		//$json = array("formatList" => $formatInfo);
+
 		$json = array("formatList" => $formatArray);
 		$encoded = json_encode($json);
 		die($encoded);
-
 
 	}
 	mysqli_close($conn);

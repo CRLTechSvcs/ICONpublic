@@ -182,28 +182,28 @@ function display_publications_by_collection( pubs_in_collectionJSON ){ // callba
       this_output_div += pubs_in_collection[i].pub_title+ '</a>';
       this_output_div += '</p>';
 
-      this_output_div += '<p class="three columns statisticsData">';
-        this_output_div += pubs_in_collection[i].pub_city+ ', ' +pubs_in_collection[i].country_name;
-        this_output_div += '<br/>';
-        this_output_div += pubs_in_collection[i].pub_bgnDate +'&nbsp; to &nbsp;'+ pubs_in_collection[i].pub_endDate;
+      this_output_div += '<p class="three columns">Published at: <br/>';
+       this_output_div += '<span class="statisticsData">' + pubs_in_collection[i].pub_city+ ', ' +pubs_in_collection[i].country_name;
+        this_output_div += '</span><br/>from: <br/><span class="statisticsData">' + pubs_in_collection[i].pub_bgnDate + '</span>';
+        this_output_div += '&nbsp; to &nbsp;<span class="statisticsData">' + pubs_in_collection[i].pub_endDate + '</span>';
       this_output_div += '</p>';
 
       this_output_div += '<ul class="three columns">';
           if(pubs_in_collection[i].pub_coll_note){
 
             var pcnote_array = pubs_in_collection[i].pub_coll_note.split(';');
+            //console.log('pcnote_array length = ', pcnote_array.length);
             for(var n=0; n < pcnote_array.length; n++){
               var this_note = pcnote_array[n].replace(': ', ':<br/>');
               //this_output_div += '<li>'+ this_note +'</li>';
 
               var label = this_note.substr(0, this_note.indexOf(':<br/>')+6);
               var content = this_note.substr(this_note.indexOf(':<br/>')+6);
-if(this_note.indexOf('109E40A8ADC79AC0') != -1){
-console.log('109E40A8ADC79AC0 label = ', label, ' ; content = ', content);
-}
-              this_output_div += '<li>'+ label +'<span class="statisticsData">'+ content +'</span></li>';
 
-
+              //console.info('label=',label , ' && content=', content);
+              if (label && content){ // prevent empty list items
+                this_output_div += '<li>'+ label +'<span class="statisticsData">'+ content +'</span></li>';
+              }
             }//end for each piece of the note
           } // end if note
 
@@ -248,7 +248,7 @@ $( document ).ready(function() {
   setTimeout(function () { // takes a bit to get the collection_id back
     /*
     do {
-      org_id    = get_org_ID_from_org_NAME( org_name ); // statistics_organizations.js
+      org_id    = get_org_ID_from_org_NAME( org_name ); // statistics.js
       setTimeout(function () { var junk = "waiting for org_id"; }, 5000 );
     } while (org_id == "@@@");  // end while
     */

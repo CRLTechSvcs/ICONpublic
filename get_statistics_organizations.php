@@ -67,7 +67,7 @@
       $issueDates = $org_id . "-min_max_dates";
       $issueDatesQuery = 'SELECT CAST(CONCAT(MIN(issue_date), " to ", MAX(issue_date)) AS CHAR) AS issue_dates FROM issues ';
       $issueDatesQuery .= 'WHERE org_id = ? ';
-      $issueDatesQuery .= "AND issue_date <> '0000-00-00'";
+      //$issueDatesQuery .= "AND issue_date <> '0000-00-00'"; // AJE 2016-05-11 zerodate_issues moved to new table
     	$issueDatesStatement = $conn->prepare($issueDatesQuery);
       $issueDatesStatement->bind_param('s', $org_id);
       $issueDatesStatement->execute();

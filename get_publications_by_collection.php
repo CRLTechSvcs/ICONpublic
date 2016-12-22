@@ -19,7 +19,21 @@ function custom_sort($a,$b) { // Define the custom sort function
 }
 
   // 1) get all the pub_ids
-	$collections_pub_id_SQL = 'SELECT DISTINCT pub_id FROM pub_collections WHERE collection_id = "' . $collection_id . '"';
+	// original SQL before 2016-04-13 //  $collections_pub_id_SQL = 'SELECT DISTINCT pub_id FROM pub_collections WHERE collection_id = "' . $collection_id . '" ';
+	/*
+	  AJE 2016-04-13
+	  noted some weird ordering : because we only have the pub_id field, when same title same city, they show in pub_id order instead of by year
+	    http://192.168.1.142/ICON/display_publications_by_collection.php?collection_id=59
+	    2 x Call and Post in Cleveland, 1982 start date is before 1962 start on page
+	    2 x Chicago Daily Defender, same 1966 before 1960
+
+    OK : problem turned out to be the call to the usort function right before returning the JSON.
+    AJE left the new query here
+	*/
+	$collections_pub_id_SQL =  'SELECT * FROM publications WHERE pub_id IN ( ';
+	$collections_pub_id_SQL .= '   SELECT DISTINCT pub_id FROM pub_collections WHERE collection_id = "' . $collection_id . '" ';
+	$collections_pub_id_SQL .= ') ORDER BY pub_title, pub_city, pub_bgnDate, pub_endDate';
+	// end AJE 2016-04-13 re-ordering  */
   //echo '<br/>collections_pub_id_SQL = ' . $collections_pub_id_SQL;
 
 	$collections_pub_id_result = @mysqli_query($conn, $collections_pub_id_SQL) or die( mysqli_error($conn) );
@@ -48,7 +62,8 @@ function custom_sort($a,$b) { // Define the custom sort function
   			$pub_bgnDate = $row['pub_bgnDate'];
   			$pub_endDate = $row['pub_endDate'];
   			$country_id = $row['country_id'];
-  			$country_name = $row['country_name'];
+  			// $country_name = $row['country_name']; // AJE 2016-04-13 : 'New York (State)' takes up too much room on page
+  			$country_name = str_replace(' (State)', '', $row['country_name']);
   			$pub_coll_note = ''; //filling pub_coll_note below
 
   			//pub_coll_note makes result set indistinct: multiple occurences of same pub_ids, so separate query
@@ -81,7 +96,7 @@ function custom_sort($a,$b) { // Define the custom sort function
       }//end while: each pub
     } // end while pub_id_row
 
-    usort($collection_pubs_array, "custom_sort"); // call custom sort function
+   // usort($collection_pubs_array, "custom_sort"); // call custom sort function
 
 		$encoded = json_encode($collection_pubs_array);
 		die($encoded);

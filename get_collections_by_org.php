@@ -21,7 +21,8 @@ function custom_sort($a,$b) { // Define the custom sort function
 
 
   // 1) get all the collection_ids
-	$org_collection_id_SQL = 'SELECT collection_id FROM collections WHERE org_id = "' . $org_id . '"';
+	$org_collection_id_SQL = 'SELECT collection_id FROM collections WHERE org_id = "' . $org_id . '" ';
+	$org_collection_id_SQL .= 'AND collection_id <> 59 '; /* AJE 2016-05-10 to accomodate ProQuest not wanting to see their own Black Newspapes collection listed */
   //echo '<br/>org_collection_id_SQL = ' . $org_collection_id_SQL;
 
 	$org_collection_id_result = @mysqli_query($conn, $org_collection_id_SQL) or die( mysqli_error($conn) );

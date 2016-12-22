@@ -45,6 +45,8 @@
 	$state_country_parameter = '';
 	$state_country_name_parameter = '';
 	$language_parameter = ''; // AJE 2015-07-27
+	$holding_org_parameter = ''; // AJE 2016-05-06
+
 
 	//Initialize other variables
 	//$foundInField = 'none'; // not used: AJE 2015-07-27 14:30:14
@@ -56,7 +58,7 @@
 
 	//Capture searchterm parameter values and append fields to WHERE clause
 	if (isset($_REQUEST['title'])) {
-    $title_parameter = $_REQUEST['title'];
+    $title_parameter = trim($_REQUEST['title']);
     if (strlen($title_parameter) > 0) {
     	if ($title_parameter == 'Title' || $title_parameter == 'title') {
     		//If title search term is simply the word 'title', don't search pub_title_alt field (where 'title' often appears in a different context)
@@ -67,33 +69,33 @@
   	}
 	}
 	if (isset($_REQUEST['lccn'])) {
-    $lccn_parameter = $_REQUEST['lccn'];
+    $lccn_parameter = trim($_REQUEST['lccn']);
     $lccn_parameter = str_replace("%20", "", $lccn_parameter);//strip spaces
     if (strlen($lccn_parameter) > 0) {
     	array_push($whereArray, ' (pub_id LIKE "%' . $lccn_parameter . '%" OR marc001 LIKE "%' . $lccn_parameter . '%") ');
     }
 	}
 	if (isset($_REQUEST['oclc'])) {
-    $oclc_parameter = $_REQUEST['oclc'];
+    $oclc_parameter = trim($_REQUEST['oclc']);
     if (strlen($oclc_parameter) > 0) {
     	array_push($whereArray, ' (OCLC LIKE "%' . $oclc_parameter . '%" OR marc001 LIKE "%' . $oclc_parameter . '%") ');
     }
 	}
 	if (isset($_REQUEST['issn'])) {
-    $issn_parameter = $_REQUEST['issn'];
+    $issn_parameter = trim($_REQUEST['issn']);
     if (strlen($issn_parameter) > 0) {
     	array_push($whereArray, ' ISSN LIKE "%' . $issn_parameter . '%" ');
     }
 	}
 	if (isset($_REQUEST['city'])) {
-    $city_parameter = $_REQUEST['city'];
+    $city_parameter = trim($_REQUEST['city']);
     if (strlen($city_parameter) > 0) {
     	array_push($whereArray, ' pub_city LIKE "%' . $city_parameter . '%" ');
     }
 	}
 	if (isset($_REQUEST['state_country_name'])) {
 		//User entered search term on basic search page
-    $state_country_name_parameter = $_REQUEST['state_country_name'];
+    $state_country_name_parameter = trim($_REQUEST['state_country_name']);
     if (strlen($state_country_name_parameter) > 0) {
     	//array_push($whereArray, ' country_name LIKE "%' . $state_country_name_parameter . '%" ');
     	array_push($whereArray, ' c.country_name LIKE "%' . $state_country_name_parameter . '%" ');
@@ -101,7 +103,7 @@
 	}
 	if (isset($_REQUEST['state_country'])) {
 		//User selected state or country on advanced search page
-    $state_country_parameter = $_REQUEST['state_country'];
+    $state_country_parameter = trim($_REQUEST['state_country']);
     if (!($state_country_parameter == "0")) {
     	//A state/country was selected from dropdown
     	if (strlen($state_country_parameter) > 0) {
@@ -112,12 +114,13 @@
 	}
 	//if (isset($_REQUEST['keyword'])) {
 	if ( isset($_REQUEST['keyword']) && (strlen($_REQUEST['keyword']) > 0)) {
-    $keyword_parameter = $_REQUEST['keyword'];
+    $keyword_parameter = trim($_REQUEST['keyword']);
     $keywordWhere = ' (pub_title LIKE "%' . $keyword_parameter . '%" ' .
     'OR pub_title_alt LIKE "%' . $keyword_parameter . '%" ' .
     'OR pub_id LIKE "%' . $keyword_parameter . '%" ' .
-    'OR OCLC LIKE "%' . $keyword_parameter . '%" ' .
     'OR ISSN LIKE "%' . $keyword_parameter . '%" ' .
+    'OR OCLC LIKE "%' . $keyword_parameter . '%" ' .
+    'OR marc001 LIKE "%' . $keyword_parameter . '%" ' .
     'OR pub_city LIKE "%' . $keyword_parameter . '%" ' .
     'OR country_name LIKE "%' . $keyword_parameter . '%" ' .
     'OR numberingNote515 LIKE "%' . $keyword_parameter . '%" ' .
@@ -127,13 +130,13 @@
 	}
 
 	if (isset($_REQUEST['from_year'])) {
-    $from_year_parameter = $_REQUEST['from_year'];
+    $from_year_parameter = trim($_REQUEST['from_year']);
     if (strlen($from_year_parameter) > 0) {
     	array_push($whereArray, ' pub_bgnDate >= "' . $from_year_parameter . '" AND pub_bgnDate REGEXP "^[0-9]{4}$" ');
     }
 	}
 	if (isset($_REQUEST['to_year'])) {
-    $to_year_parameter = $_REQUEST['to_year'];
+    $to_year_parameter = trim($_REQUEST['to_year']);
     if (strlen($to_year_parameter) > 0) {
     	array_push($whereArray, ' pub_endDate <= "' . $to_year_parameter . '" AND pub_endDate REGEXP "^[0-9]{4}$" ');
     }
@@ -141,12 +144,29 @@
 	// AJE new 2015-07-27
   //echo 'isset search_language? == ' . isset($_REQUEST['search_language'])	. '.<br/>';
 	if (isset($_REQUEST['search_language'])) {
-    $language_parameter = $_REQUEST['search_language'];
+    $language_parameter = trim($_REQUEST['search_language']);
     if (strlen($language_parameter) > 0) {
     	array_push($whereArray, ' p.language_id = "' . $language_parameter . '" ');
     }
 	}
 	//end AJE new 2015-07-27
+
+	// AJE new 2016-05-06
+  //echo 'isset search_holding_org? == ' . isset($_REQUEST['search_holding_org'])	. '.<br/>';
+	if (isset($_REQUEST['search_holding_org'])) {
+    $holding_org_parameter = trim($_REQUEST['search_holding_org']);
+    if (strlen($holding_org_parameter) > 0) {
+      // extra square brackets in this LIKE match how vendor org codes stored in the marc001 field
+    	// array_push($whereArray, ' p.marc001 LIKE "%[' . $_REQUEST['search_holding_org'] . ']%" ');
+    	// next: use as a 'must be held by' limit
+    	$holding_org_limit_clause = ' p.pub_id IN ( ';
+    	  $holding_org_limit_clause .= '  SELECT DISTINCT pub_id FROM issues WHERE org_id = "' . $holding_org_parameter . '" ';
+      $holding_org_limit_clause .= ') ';
+    	array_push($whereArray, $holding_org_limit_clause);
+      //echo '<br/>holding_org_limit_clause = ', $holding_org_limit_clause;
+    }
+	}
+	//end AJE new 2016-05-06
 
 	$whereClause = implode("AND", $whereArray);
 	$select = 'SELECT p.*, country_name, b_showFullText, ref_data_uri, ref_data_body, ref_data_title, ref_source_title, language_name, native_name ';
@@ -157,7 +177,7 @@
 	$select .= 'LEFT JOIN reference_data rd USING (ref_data_id) ';
 	$select .= 'LEFT JOIN reference_sources rs USING (ref_source_id) WHERE';
 	$select .= $whereClause;
-//  echo '<hr/>'. $select . '<hr/>';
+  //echo '<hr/>SQL is: '. $select . '<hr/>';
 
 	$queryResult = @mysqli_query($conn, $select) or die( mysqli_error($conn) );
 	if (!$queryResult) {

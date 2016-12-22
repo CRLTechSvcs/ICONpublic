@@ -13,7 +13,8 @@
   **********************************************************************/
 	$select  = 'SELECT * FROM issues ';
 	$select .= 'WHERE pub_id = "' . $pub_id . '" ';
-  $select .= 'AND issue_date <> "0000-00-00"  ORDER BY issue_date';
+  //$select .= 'AND issue_date <> "0000-00-00"  ORDER BY issue_date'; // AJE 2016-05-11 zerodate_issues moved to new table
+  $select .= 'ORDER BY issue_date';
 
 	$queryResult = @mysqli_query($conn, $select) or die( mysqli_error($conn) );
 	$numrows = mysqli_num_rows($queryResult);

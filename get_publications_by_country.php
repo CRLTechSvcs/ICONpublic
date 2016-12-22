@@ -96,7 +96,8 @@
 			$country_issues = 0;
 			echo "<div style='color:#0000ff;'>country: " . $country_id . " " . $country_name . " pubs: " . $allCountryPubIDs . "</div>";
 			if ($allCountryPubIDs){ //there are some pubs for this country
-    	  $issQuery   = "SELECT COUNT(*) AS country_issues FROM issues WHERE pub_id IN ( " . $allCountryPubIDs . " ) AND issue_date <> '0000-00-00'";
+    	  $issQuery   = "SELECT COUNT(*) AS country_issues FROM issues WHERE pub_id IN ( " . $allCountryPubIDs . " ) ';
+    	  //$issQuery   .= "AND issue_date <> '0000-00-00'"; // AJE 2016-05-11 zerodate_issues moved to new table
         echo "<div style='color:#ff0000;'>" . $issQuery . "</div>";
         $issQueryResult = @mysqli_query($conn, $issQuery) or die( "issQuery died with error: " . mysqli_error($conn) );
         while($issRow = mysqli_fetch_array($issQueryResult, MYSQL_ASSOC)) {
@@ -110,7 +111,7 @@
       $issueDates = $country_id . "-min_max_dates";
       $issueDatesQuery = 'SELECT CAST(CONCAT(MIN(issue_date), " to ", MAX(issue_date)) AS CHAR) AS issue_dates FROM issues ';
       $issueDatesQuery .= 'WHERE pub_id IN ( ' . $allCountryPubIDs . ' ) ';
-      $issueDatesQuery .= "AND issue_date <> '0000-00-00'";
+      //$issueDatesQuery .= "AND issue_date <> '0000-00-00'"; // AJE 2016-05-11 zerodate_issues moved to new table
     	$issueDatesQueryResult = @mysqli_query($conn, $issueDatesQuery) or die( "issueDatesQuery died with error: on country " . $country_id . "; error ==" . mysqli_error($conn) );
       while($issueDatesRow = mysqli_fetch_array($issueDatesQueryResult, MYSQL_ASSOC)) {
         $issue_dates = $issueDatesRow['issue_dates'];

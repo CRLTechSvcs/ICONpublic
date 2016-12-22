@@ -16,6 +16,10 @@
 		<script src="javascripts/jquery.js"></script>
 
 		<!--https://www.google.com/jsapi is needed for Google Charts API-->
+		<!--script src="https://www.google.com/jsapi"></script
+		# AJE 2016-04-28 changed original bc console messages from Google: want a key? and do not use 'sensor' parameter
+		  - change had no effect
+		-->
 		<script src="https://www.google.com/jsapi"></script>
 		<!--CRL versions of calls to Google Charts API are in next script: -->
 		<script src="javascripts/googleChartsAPIfunctions.js"></script>

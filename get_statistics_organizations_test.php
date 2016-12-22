@@ -1,14 +1,9 @@
-﻿<?php
+<?php
 	$orgInfo = array();
 	$orgsArray = array();
 	include ("config.php");
 
   /*
-
-    2015-12-16 AJE
-    hardcode an org_id
-    and a where clause to quickly add a big org to the static statistics file
-
     2013-08-12 AJE
     for a report on orgs, we want to know
       1) how many there are
@@ -19,7 +14,10 @@
 
   */
 
-	$orgsQuery = "SELECT org_id, org_name, org_street1, org_street2, org_city, country_id, org_postalCode, org_home_uri FROM organizations ORDER BY org_id";
+	//$orgsQuery = "SELECT org_id, org_name, org_street1, org_street2, org_city, country_id, org_postalCode, org_home_uri FROM organizations ORDER BY org_id";
+	$orgsQuery = "SELECT org_id, org_name, org_street1, org_street2, org_city, country_id, org_postalCode, org_home_uri FROM organizations ";
+	//$orgsQuery .= "WHERE org_id = 'PQHN'";
+	$orgsQuery .= "WHERE org_id = 'MITGS'";
 
 	$queryResult = @mysqli_query($conn, $orgsQuery) or die( mysqli_error($conn) );
 	$numrows = mysqli_num_rows($queryResult);
@@ -72,7 +70,7 @@
       $issueDates = $org_id . "-min_max_dates";
       $issueDatesQuery = 'SELECT CAST(CONCAT(MIN(issue_date), " to ", MAX(issue_date)) AS CHAR) AS issue_dates FROM issues ';
       $issueDatesQuery .= 'WHERE org_id = ? ';
-      //$issueDatesQuery .= "AND issue_date <> '0000-00-00'"; // AJE 2016-05-11 zerodate_issues moved to new table
+      //$issueDatesQuery .= "AND issue_date <> '0000-00-00' "; // AJE 2016-05-11 zerodate_issues moved to new table
     	$issueDatesStatement = $conn->prepare($issueDatesQuery);
       $issueDatesStatement->bind_param('s', $org_id);
       $issueDatesStatement->execute();

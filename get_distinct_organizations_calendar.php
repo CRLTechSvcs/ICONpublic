@@ -12,7 +12,7 @@
 	$organizationQuery  = "SELECT DISTINCT o.org_id, o.org_name FROM issues i ";
 	$organizationQuery .= "JOIN organizations o ON i.org_id = o.org_id ";
 	$organizationQuery .= "WHERE pub_id = '" . $pub_id . "' ";
-	$organizationQuery .= "AND i.issue_date <> '0000-00-00' ";
+	$organizationQuery .= "AND i.issue_date <> '0000-00-00' "; // AJE 2016-05-11 zerodate_issues moved to new table
 	$organizationQuery .= "ORDER BY org_name";
   */
   // 2015-02-03 AJE: new query to avoid hitting issues table

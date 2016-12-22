@@ -42,7 +42,7 @@ file_body
     // DEVNOTE: in visualizations.publications, pub_id is an  INT
     // in icondata, it is text: need quotes here
   $sql_holders .= 'WHERE pub_id = "' . $pub_id . '" ';
-  $sql_holders .= "AND issue_date <> '0000-00-00' ";
+  // $sql_holders .= "AND issue_date <> '0000-00-00' "; // AJE 2016-05-11 zerodate_issues moved to new table
   $sql_holders .= 'GROUP BY org_id ';
   $sql_holders .= 'ORDER BY org_issue_count DESC, org_id ASC';
   //echo $sql_holders . '<br/>';

@@ -35,8 +35,9 @@ function custom_sort($a,$b) { // Define the custom sort function
 
 
   // 1) get all the pub_ids
-	//$orgs_pub_id_SQL = 'SELECT DISTINCT pub_id FROM issues WHERE org_id = "' . $org_id . '"';
-	$orgs_pub_id_SQL = 'SELECT DISTINCT pub_id FROM C3publications_per_org WHERE org_id = "' . $org_id . '"';
+	$orgs_pub_id_SQL = 'SELECT DISTINCT pub_id FROM issues WHERE org_id = "' . $org_id . '"';
+	// AJE 2016-04-28 reverted to issues table : too much trouble keeping C3publications_per_org up to date
+	//$orgs_pub_id_SQL = 'SELECT DISTINCT pub_id FROM C3publications_per_org WHERE org_id = "' . $org_id . '"';
   //echo '<br/>orgs_pub_id_SQL = ' . $orgs_pub_id_SQL . ';';
 
 	$orgs_pub_id_result = @mysqli_query($conn, $orgs_pub_id_SQL) or die( mysqli_error($conn) );

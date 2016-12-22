@@ -147,6 +147,10 @@
 
 start_progress( 1000 ); // statistics.js
 
+$("#pbheader_title_count").html('[retrieving]');
+
+$.get("get_statistics_organizations_static.php", prepareOrganizations); // statistics.js
+
 //$.get("get_publications_by_org_count.php", { 'org_id':org_id }, set_org_pub_count);
 function set_org_pub_count( org_pub_countJSON ){
   //console.info('set_org_pub_count(', org_pub_countJSON, ')');
@@ -212,9 +216,6 @@ function display_publications_by_org( pubs_held_by_orgJSON ){ // callback for: g
 }//end display_publications_by_org
 
 
-$("#pbheader_title_count").html('[retrieving]');
-
-$.get("get_statistics_organizations_static.php", prepareOrganizations); // statistics.js
 
 var org_pub_count = 0;
 var pubs_held_by_org = [];

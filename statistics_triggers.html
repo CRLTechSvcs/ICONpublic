@@ -18,7 +18,7 @@
       <!--
       FOR EACH NEW MAP, ADD A CANVAS IN statistics_chart_canvas.html,
             add the canvas ID to the 'charts' array in statistics.js,
-            add a call in statistics_countries.js to google_visualization_map() in googleChartsAPIfunctions.js,
+            add a call in statistics.js to google_visualization_map() in googleChartsAPIfunctions.js,
             add a trigger function in this file to chartDisplay() passing the appropriate canvas ID
       -->
       <li id="country_count_trigger_worldMap" class="chart_trigger">map: world</li>
@@ -78,7 +78,7 @@
     - http://api.jquery.com/slideUp/
 
     for each of the triggers: click to show/hide appropriate page sections (javascripts/statistics.js)
-      AJE 2014-08-29: modified + consolidated: statistics_countries has the calls to Google Charts API to actuall build the maps
+      AJE 2014-08-29: modified + consolidated: statistics.js has the calls to Google Charts API to actuall build the maps
   */
   $("#country_count_trigger").click( function(){
     if ( $( "#country_count_charts_list" ).is( ":hidden" ) ) {

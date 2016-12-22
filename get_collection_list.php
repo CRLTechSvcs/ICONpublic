@@ -32,8 +32,9 @@
 	$collectionQuery .= 'WHERE c.collection_id IN ( ';
 	  //$collectionQuery .= 'SELECT DISTINCT(collection_id) FROM issues ';
 	  $collectionQuery .= 'SELECT DISTINCT(collection_id) FROM pub_collections ';
-	  //$collectionQuery .= 'WHERE pub_id = "'. $this_pub_id . '" AND issue_date != "0000-00-00" ';
+	  //$collectionQuery .= 'WHERE pub_id = "'. $this_pub_id . '" AND issue_date != "0000-00-00" '; // AJE 2016-05-11 zerodate_issues moved to new table
 	  $collectionQuery .= 'WHERE pub_id = "'. $this_pub_id . '" ';
+	  $collectionQuery .= 'AND collection_id <> 59 '; /* AJE 2016-05-10 to accomodate ProQuest not wanting to see their own Black Newspapes collection listed */
   $collectionQuery .= ') ORDER BY c.collection_title_one';
 //echo '<hr/>collectionQuery = ' . $collectionQuery . '<hr/>';
 	$collectionResult = @mysqli_query($conn, $collectionQuery) or die( mysqli_error($conn) );

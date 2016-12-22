@@ -4,6 +4,11 @@
   This page will never be invoked with a pub_id parameter.
   Instead, once page has loaded the user will enter search term(s) and click on the 'Go' button to retrieve publication info.
   Search is also triggered by pressing Enter key while in a textbox.
+
+
+  AJE 2016-05-06
+  just documenting: search.php has get_titles.php as target, whose callback is function displayTitles() in ./javascripts/search_functions.js
+
   */
 
 ?>
@@ -125,10 +130,17 @@
         						</select>
 									</div>
 									<div class="three columns">
-									  <!--DEVNOTE: Limit search to publications with ICON issue data
+										<select id="org_dropdown" title="Select search vendor or holding organization" class="eleven">
+       								<!--AJE 2016-05-06 vendors added per Amy-->
+       								<option value="0">Held by organization: </option>
+       								<!--AJE 2016-05-06 end vendors added per Amy-->
+        						</select>
+									</div>
+      						<div class="two columns">&nbsp;
+      						  <!--DEVNOTE: Limit search to publications with ICON issue data
+      						  // AJE : 2016-05-06 this was in the three columns div above, was commented out
 									  <input type="checkbox" name="limit_valid_issues" value="1" />-->
 									</div>
-      						<div class="two columns">&nbsp;</div>
 									<div class="two columns end">&nbsp;</div>
 								</div>
 							</div>

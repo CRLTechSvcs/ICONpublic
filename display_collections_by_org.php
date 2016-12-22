@@ -167,7 +167,17 @@ function display_collections_by_org( collections_from_orgJSON ){ // callback for
     var coll_org_id     = collections_from_org[i].collection_org_id;
     var coll_org_name   = collections_from_org[i].collection_org_name;
     var coll_title_one  = collections_from_org[i].collection_title_one;
+    /*
+    // AJE 2016-05-10 16:27:22
     var coll_title_two  = collections_from_org[i].collection_title_two;
+    */
+    var coll_title_two  = "";
+    if ((collections_from_org[i].collection_title_two) &&
+      (coll_title_one != collections_from_org[i].collection_title_two)) {
+      coll_title_two  = collections_from_org[i].collection_title_two;
+    } /* else console.warn('AJE 2016-05-10 coll_title_one = ', coll_title_one, ' ; coll_title_two=', coll_title_two); */
+
+
     var coll_format     = collections_from_org[i].collection_format;
     var coll_country    = collections_from_org[i].collection_country;
     var coll_home_uri   = collections_from_org[i].collection_home_uri;
@@ -191,6 +201,7 @@ function display_collections_by_org( collections_from_orgJSON ){ // callback for
             this_output_div += 'style="' +thisStyle+ '" target="_blank">';
             this_output_div += coll_title_two+ '</a>';
         } // end if titles
+
       // 2015-10-15 there is space in the UI to add more info about the collection
       this_output_div += '</p>'; // end container of collection title data
 

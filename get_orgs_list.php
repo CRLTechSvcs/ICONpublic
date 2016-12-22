@@ -23,7 +23,8 @@
   $orgsQuery = 'SELECT DISTINCT o.org_id, o.org_name, i.issue_date ';
   $orgsQuery .= 'FROM issues i JOIN organizations o ON i.org_id = o.org_id ';
   $orgsQuery .= 'WHERE pub_id = "' . $pub_id . '" ';
-  $orgsQuery .= 'AND i.issue_date <> "0000-00-00" ORDER BY org_name, issue_date';
+  $orgsQuery .= 'AND i.issue_date <> "0000-00-00" '; // AJE 2016-05-11 zerodate_issues moved to new table
+  $orgsQuery .= 'ORDER BY org_name, issue_date';
 
   // 2015-02-03 AJE:  want a version that first gets the distinct org_ids
     then gets the min-max dates for each org in the loop for each org
@@ -34,18 +35,23 @@
 
 */
 
-  // 2015-02-03 AJE: new query to avoid hitting issues table
+  /*
+    //2015-02-03 AJE: new query to avoid hitting issues table
 	$orgsQuery  = "SELECT DISTINCT A2.org_id, o.org_name ";
 	$orgsQuery .= "FROM A2issues_per_organization A2 ";
 	$orgsQuery .= "JOIN organizations o ON A2.org_id = o.org_id ";
 	$orgsQuery .= "WHERE A2.pub_id = '" . $pub_id . "' ";
 	$orgsQuery .= "ORDER BY org_name";
-	/* 2015-02-03 AJE: original query with issues table
+	*/
+	/*
+	  2015-02-03 AJE: original query with issues table
+	  2016-04-28 AJE: reverted
+	*/
   $orgsQuery = 'SELECT DISTINCT i.org_id AS org_id, o.org_name ';
   $orgsQuery .= 'FROM issues i JOIN organizations o ON i.org_id = o.org_id ';
   $orgsQuery .= 'WHERE pub_id = "' . $pub_id . '" ';
-  $orgsQuery .= 'AND i.issue_date <> "0000-00-00" ORDER BY org_name';
-  */
+  // $orgsQuery .= 'AND i.issue_date <> "0000-00-00" '; // AJE 2016-05-11 zerodate_issues moved to new table
+  $orgsQuery .= 'ORDER BY org_name';
 
 	$orgsResult = @mysqli_query($conn, $orgsQuery) or die( mysqli_error($conn) );
 	$numrows = mysqli_num_rows($orgsResult);
@@ -75,14 +81,22 @@
       } else {
         $dateQuery = 'SELECT MIN(issue_date) AS MINissue_date, MAX(issue_date) AS MAXissue_date ';
         $dateQuery .= 'FROM issues WHERE pub_id = "' . $pub_id . '" ';
-        $dateQuery .= 'AND org_id = "' . $orgRow['org_id'] . '" AND issue_date <> "0000-00-00" ';
+        $dateQuery .= 'AND org_id = "' . $orgRow['org_id'] . '" ';
+        $dateQuery .= 'AND issue_date <> "0000-00-00" '; // AJE 2016-05-11 zerodate_issues moved to new table
       }
 */
 
-    // 2015-02-10 new version using C3publications_per_org for all pubs
+    /*
+      // 2015-02-10 new version using C3publications_per_org for all pubs
+      // 2016-04-28 AJE : reverted
       $dateQuery = 'SELECT MINissue_date, MAXissue_date ';
       $dateQuery .= 'FROM C3publications_per_org WHERE pub_id = "' . $pub_id . '" ';
       $dateQuery .= 'AND org_id = "' . $orgRow['org_id'] . '" ';
+    */
+    $dateQuery = 'SELECT MIN(issue_date) AS MINissue_date, MAX(issue_date) AS MAXissue_date ';
+    $dateQuery .= 'FROM issues WHERE pub_id = "' . $pub_id . '" ';
+    $dateQuery .= 'AND org_id = "' . $orgRow['org_id'] . '" ';
+    //$dateQuery .= 'AND issue_date <> "0000-00-00" ';  // AJE 2016-05-11 zerodate_issues moved to new table
 
       $dateResult = @mysqli_query($conn, $dateQuery) or die( mysqli_error($conn) );
     	if (!$dateResult) {

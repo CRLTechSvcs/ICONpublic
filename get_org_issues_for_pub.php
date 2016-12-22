@@ -36,7 +36,7 @@ function sortByProperty(property) {
     // AJE 2015-01-27 original SQL
   $this_sql = 'SELECT COUNT(*) FROM issues ';
   $this_sql .= 'WHERE pub_id = "' . $selectedPubId . '" AND org_id = "' . $org_id . '" ';
-  $this_sql .= 'AND issue_date <> "0000-00-00"';
+  $this_sql .= 'AND issue_date <> "0000-00-00"';  // AJE 2016-05-11 zerodate_issues moved to new table
   ***********************************************************/
 
     // AJE 2015-01-27 NEW CRAZY VERSION with prefilled table
